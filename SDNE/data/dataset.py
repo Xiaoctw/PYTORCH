@@ -1,4 +1,4 @@
-import networkx as nx
+import networkx as nx #画图用的
 import numpy as np
 from torch.utils import data
 from torch.utils.data import DataLoader
@@ -25,7 +25,7 @@ def Read_graph(file_name):
     Adj = torch.FloatTensor(Adj)
     return G, Adj, Node
 
-class Dataload(data.Dataset):
+class DataSet(data.Dataset):
 
     def __init__(self, Adj, Node):
         self.Adj = Adj
@@ -49,7 +49,7 @@ def read_label():
 if __name__ == '__main__':
     #print(read_label())
     G, Adj, Node = Read_graph('./karate/karate.edgelist')
-    Data = Dataload(Adj, Node)
+    Data = DataSet(Adj, Node)
     Test = DataLoader(Data, batch_size=20, shuffle=True)
     for index in Test:
         adj_batch = Adj[index]

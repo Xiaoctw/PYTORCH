@@ -8,6 +8,7 @@ from data import dataset
 from model import *
 import numpy as np
 import matplotlib.pyplot as plt
+
 plt.switch_backend('agg')
 
 
@@ -40,10 +41,11 @@ def parse_args():
                         help='nu2 is a hyperparameter in SDNE')
     parser.add_argument('--bs', default=100, type=int,
                         help='batch size of SDNE')
-    parser.add_argument('--nhid0', default=1000, type=int,
-                        help='The first dim')
-    parser.add_argument('--nhid1', default=128, type=int,
-                        help='The second dim')
+    # parser.add_argument('--nhid0', default=1000, type=int,
+    #                     help='The first dim')
+    # parser.add_argument('--nhid1', default=128, type=int,
+    #                     help='The second dim')
+    parser.add_argument('--hid_sizes',default=[1000,512,256,128],type=list,help='hidden layers')
     parser.add_argument('--step_size', default=10, type=int,
                         help='The step size for lr')
     parser.add_argument('--gamma', default=0.9, type=int,
@@ -60,7 +62,7 @@ if __name__ == '__main__':
     model = SDNE(Node, args.nhid0, args.nhid1, args.dropout, args.alpha)
     opt = optim.Adam(model.parameters(), lr=args.lr)
     scheduler = torch.optim.lr_scheduler.StepLR(opt, step_size=args.step_size, gamma=args.gamma)
-    Data = dataset.Dataload(Adj, Node)
+    Data = dataset.DataSet(Adj, Node)
     Data = DataLoader(Data, batch_size=args.bs, shuffle=True, )
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     device1 = torch.device('cpu')
@@ -70,6 +72,7 @@ if __name__ == '__main__':
         loss_sum, loss_L1, loss_L2, loss_reg = 0, 0, 0, 0
         for index in Data:
             adj_batch = Adj[index]
+            # 控制adj_mat为一个小方阵，为(batch_size,batch_size)
             adj_mat = adj_batch[:, index]
             b_mat = torch.ones_like(adj_batch)
             b_mat[adj_batch != 0] = args.beta
@@ -80,6 +83,7 @@ if __name__ == '__main__':
             opt.zero_grad()
             L_1st, L_2nd, L_all = model(adj_batch, adj_mat, b_mat)
             L_reg = 0
+            # 加入正则化项
             for param in model.parameters():
                 L_reg += args.nu1 * torch.sum(torch.abs(param)) + args.nu2 * torch.sum(param * param)
             Loss = L_all + L_reg
@@ -91,7 +95,8 @@ if __name__ == '__main__':
             loss_reg += L_reg
         scheduler.step(epoch)
         # print("The lr for epoch %d is %f" %(epoch, scheduler.get_lr()[0]))
-        print("loss for epoch %d, loss_sum is %f, loss_L1 is %f, loss_L2 is %f, loss_reg is %f:" % (epoch,loss_sum,loss_L1,loss_L2,loss_reg))
+        print("loss for epoch %d, loss_sum is %f, loss_L1 is %f, loss_L2 is %f, loss_reg is %f:" % (
+        epoch, loss_sum, loss_L1, loss_L2, loss_reg))
         # print("loss_sum is %f" % loss_sum)
         # print("loss_L1 is %f" % loss_L1)
         # print("loss_L2 is %f" % loss_L2)
@@ -99,9 +104,9 @@ if __name__ == '__main__':
     model.eval()
     model = model.to(device1)
     embedding = model.savector(Adj)
-    labels=dataset.read_label()
+    labels = dataset.read_label()
     outVec = embedding.detach().numpy()
-    embs=TSNE(n_components=2).fit_transform(outVec)
-    plt.scatter(embs[:,0],embs[:,1],c=labels)
+    embs = TSNE(n_components=2).fit_transform(outVec)
+    plt.scatter(embs[:, 0], embs[:, 1], c=labels)
     plt.savefig('embedding.png')
     np.savetxt(args.output, outVec)
