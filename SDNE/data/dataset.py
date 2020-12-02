@@ -3,6 +3,7 @@ import numpy as np
 from torch.utils import data
 from torch.utils.data import DataLoader
 import torch
+from pathlib import Path
 
 def Read_graph(file_name):
     edge = np.loadtxt(file_name).astype(np.int32)
@@ -39,7 +40,14 @@ class Dataload(data.Dataset):
     def __len__(self):
         return self.Node
 
+def read_label():
+    path=Path(__file__).parent/'cora'/'cora_labels.txt'
+    labels=np.loadtxt(path)[:,1]
+    return labels
+
+
 if __name__ == '__main__':
+    #print(read_label())
     G, Adj, Node = Read_graph('./karate/karate.edgelist')
     Data = Dataload(Adj, Node)
     Test = DataLoader(Data, batch_size=20, shuffle=True)

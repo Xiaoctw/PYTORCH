@@ -2,10 +2,11 @@ import torch
 import torch.optim as optim
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from torch.utils.data.dataloader import DataLoader
-
-from data import dataset
-from model import *
+from sklearn.decomposition import PCA
+from SDNE.data import dataset
+from SDNE.model import *
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def parse_args():
@@ -87,13 +88,17 @@ if __name__ == '__main__':
             loss_reg += L_reg
         scheduler.step(epoch)
         # print("The lr for epoch %d is %f" %(epoch, scheduler.get_lr()[0]))
-        print("loss for epoch %d is:" % epoch)
-        print("loss_sum is %f" % loss_sum)
-        print("loss_L1 is %f" % loss_L1)
-        print("loss_L2 is %f" % loss_L2)
-        print("loss_reg is %f" % loss_reg)
+        print("loss for epoch %d, loss_sum is %f, loss_L1 is %f, loss_L2 is %f, loss_reg is %f:" % (epoch,loss_sum,loss_L1,loss_L2,loss_reg))
+        # print("loss_sum is %f" % loss_sum)
+        # print("loss_L1 is %f" % loss_L1)
+        # print("loss_L2 is %f" % loss_L2)
+        # print("loss_reg is %f" % loss_reg)
     model.eval()
     model = model.to(device1)
     embedding = model.savector(Adj)
+    labels=dataset.read_label()
     outVec = embedding.detach().numpy()
+    embs=PCA(n_components=2).fit_transform(embedding)
+    plt.plot(embs[:,0],embs[:,1],c=labels)
+    plt.savefig('embedding.png')
     np.savetxt(args.output, outVec)
