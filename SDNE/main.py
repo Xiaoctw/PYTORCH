@@ -52,13 +52,14 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
-    G, Adj, Node =  dataset.Read_graph(args.input)
+    G, Adj, Node = dataset.Read_graph(args.input)
     model = SDNE(Node, args.nhid0, args.nhid1, args.dropout, args.alpha)
     opt = optim.Adam(model.parameters(), lr=args.lr)
     scheduler = torch.optim.lr_scheduler.StepLR(opt, step_size=args.step_size, gamma=args.gamma)
     Data = dataset.Dataload(Adj, Node)
     Data = DataLoader(Data, batch_size=args.bs, shuffle=True, )
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device1 = torch.device('cpu')
     model = model.to(device)
     model.train()
     for epoch in range(1, args.epochs + 1):
@@ -68,10 +69,10 @@ if __name__ == '__main__':
             adj_mat = adj_batch[:, index]
             b_mat = torch.ones_like(adj_batch)
             b_mat[adj_batch != 0] = args.beta
-            #转到GPU
-            adj_mat.to(device)
-            b_mat.to(device)
-            adj_batch.to(device)
+            # 转到GPU
+            adj_mat = adj_mat.to(device)
+            b_mat = b_mat.to(device)
+            adj_batch = adj_batch.to(device)
             opt.zero_grad()
             L_1st, L_2nd, L_all = model(adj_batch, adj_mat, b_mat)
             L_reg = 0
@@ -86,12 +87,13 @@ if __name__ == '__main__':
             loss_reg += L_reg
         scheduler.step(epoch)
         # print("The lr for epoch %d is %f" %(epoch, scheduler.get_lr()[0]))
-        print("loss for epoch %d is:" %epoch)
-        print("loss_sum is %f" %loss_sum)
-        print("loss_L1 is %f" %loss_L1)
-        print("loss_L2 is %f" %loss_L2)
-        print("loss_reg is %f" %loss_reg)
+        print("loss for epoch %d is:" % epoch)
+        print("loss_sum is %f" % loss_sum)
+        print("loss_L1 is %f" % loss_L1)
+        print("loss_L2 is %f" % loss_L2)
+        print("loss_reg is %f" % loss_reg)
     model.eval()
+    model = model.to(device1)
     embedding = model.savector(Adj)
     outVec = embedding.detach().numpy()
     np.savetxt(args.output, outVec)
