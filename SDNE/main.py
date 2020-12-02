@@ -8,6 +8,7 @@ from data import dataset
 from model import *
 import numpy as np
 import matplotlib.pyplot as plt
+import networkx as nx
 
 plt.switch_backend('agg')
 
@@ -109,3 +110,7 @@ if __name__ == '__main__':
     plt.scatter(embs[:, 0], embs[:, 1], c=labels)
     plt.savefig('embedding.png')
     np.savetxt(args.output, outVec)
+    nx.draw(G)
+    plt.savefig('G.png')
+
+
