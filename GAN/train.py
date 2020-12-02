@@ -109,7 +109,7 @@ def test():
 def save_embeddings():
     model.eval()
     output = model.savector(features, adj)
-    outVec = output.detach().numpy()
+    outVec = output.cpu().detach().numpy()
     path=Path(__file__).parent/'cora'/'outVec.txt'
     np.savetxt(path,outVec)
     path=Path(__file__).parent/'cora'/'labels.txt'
