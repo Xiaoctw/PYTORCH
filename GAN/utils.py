@@ -24,7 +24,7 @@ def encode_onehot(labels):
     #  output:[1, 4, 9, 16, 25]
 
 
-def load_data(path="./core/", dataset="cora"):
+def load_data(path="./cora/", dataset="cora"):
     """Load citation network dataset (cora only for now)"""
     print('Loading {} dataset...'.format(dataset))
 
