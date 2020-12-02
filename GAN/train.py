@@ -122,8 +122,10 @@ for epoch in range(args.epochs):
     train(epoch)
 print("Optimization Finished!")
 print("Total time elapsed: {:.4f}s".format(time.time() - t_total))
-
+print('Start testing...')
 test()
+print('End of the test')
+print('Retain embedding results.')
 save_embeddings()
 
 
