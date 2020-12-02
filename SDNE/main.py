@@ -7,6 +7,7 @@ from data import dataset
 from model import *
 import numpy as np
 import matplotlib.pyplot as plt
+plt.switch_backend('agg')
 
 
 def parse_args():
@@ -53,6 +54,7 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
+
     G, Adj, Node = dataset.Read_graph(args.input)
     model = SDNE(Node, args.nhid0, args.nhid1, args.dropout, args.alpha)
     opt = optim.Adam(model.parameters(), lr=args.lr)
