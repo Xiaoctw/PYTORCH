@@ -3,6 +3,7 @@ import torch.optim as optim
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from torch.utils.data.dataloader import DataLoader
 from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
 from data import dataset
 from model import *
 import numpy as np
@@ -100,7 +101,7 @@ if __name__ == '__main__':
     embedding = model.savector(Adj)
     labels=dataset.read_label()
     outVec = embedding.detach().numpy()
-    embs=PCA(n_components=2).fit_transform(outVec)
+    embs=TSNE(n_components=2).fit_transform(outVec)
     plt.scatter(embs[:,0],embs[:,1],c=labels)
     plt.savefig('embedding.png')
     np.savetxt(args.output, outVec)
