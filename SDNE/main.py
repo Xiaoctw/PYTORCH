@@ -3,8 +3,8 @@ import torch.optim as optim
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from torch.utils.data.dataloader import DataLoader
 
-from SDNE.data import dataset
-from SDNE.model import *
+from data import dataset
+from model import *
 import numpy as np
 
 
@@ -68,7 +68,10 @@ if __name__ == '__main__':
             adj_mat = adj_batch[:, index]
             b_mat = torch.ones_like(adj_batch)
             b_mat[adj_batch != 0] = args.beta
-
+            #转到GPU
+            adj_mat.to(device)
+            b_mat.to(device)
+            adj_batch.to(device)
             opt.zero_grad()
             L_1st, L_2nd, L_all = model(adj_batch, adj_mat, b_mat)
             L_reg = 0
