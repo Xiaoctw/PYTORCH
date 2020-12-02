@@ -3,8 +3,8 @@ import torch.optim as optim
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from torch.utils.data.dataloader import DataLoader
 from sklearn.decomposition import PCA
-from SDNE.data import dataset
-from SDNE.model import *
+from data import dataset
+from model import *
 import numpy as np
 import matplotlib.pyplot as plt
 
