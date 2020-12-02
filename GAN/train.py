@@ -106,6 +106,7 @@ def test():
           "loss= {:.4f}".format(loss_test.item()),
           "accuracy= {:.4f}".format(acc_test.item()))
 
+
 def save_embeddings():
     model.eval()
     output = model.savector(features, adj)
@@ -113,19 +114,20 @@ def save_embeddings():
     path=Path(__file__).parent/'cora'/'outVec.txt'
     np.savetxt(path,outVec)
     path=Path(__file__).parent/'cora'/'labels.txt'
-    np.savetxt(path,labels)
+    outLabel=labels.cpu().detach().numpy()
+    np.savetxt(path,outLabel)
 
-
-# Train model  逐个epoch进行train，最后test
-t_total = time.time()
-for epoch in range(args.epochs):
-    train(epoch)
-print("Optimization Finished!")
-print("Total time elapsed: {:.4f}s".format(time.time() - t_total))
-print('Start testing...')
-test()
-print('End of the test')
-print('Retain embedding results.')
-save_embeddings()
+if __name__ == '__main__':
+    # Train model  逐个epoch进行train，最后test
+    t_total = time.time()
+    for epoch in range(args.epochs):
+        train(epoch)
+    print("Optimization Finished!")
+    print("Total time elapsed: {:.4f}s".format(time.time() - t_total))
+    print('Start testing...')
+    test()
+    print('End of the test')
+    print('Retain embedding results.')
+    save_embeddings()
 
 
