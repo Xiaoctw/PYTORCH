@@ -1,0 +1,15 @@
+from ATM import *
+from DeepFM import *
+x = torch.randint(1, 4, (30, 8))
+x, field_size, feature_sizes = find_deep_params(x)
+x = torch.Tensor(x).long()
+y = torch.randint(0, 2, (30,)).float()
+    # print(y[:40])
+deepFM = DeepFM(field_size=field_size, feature_sizes=feature_sizes)
+train(deepFM, x, y, num_epoch=200, lr=3e-2,print_every=20,plot_every=20)
+atm = AFM(field_size=field_size, feat_sizes=feature_sizes)
+train(atm,x,y,num_epoch=200,lr=3e-2,print_every=20,plot_every=20)
+print(deepFM(x)[:10])
+print(y[:10])
+print(atm(x)[:10])
+print(y[:10])
