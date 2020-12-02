@@ -109,8 +109,4 @@ if __name__ == '__main__':
     embs = TSNE(n_components=2).fit_transform(outVec)
     plt.scatter(embs[:, 0], embs[:, 1], c=labels)
     plt.savefig('embedding.png')
-    np.savetxt(args.output, outVec)
-    nx.draw(G)
-    plt.savefig('G.png')
-
 

@@ -20,9 +20,6 @@ class SDNE(nn.Module):
             setattr(self, 'decode{}'.format(i + 1),
                     nn.Linear(hid_sizes[self.num_hids - 1 - i], hid_sizes[self.num_hids - 2 - i]))
         setattr(self, 'decode{}'.format(self.num_hids), nn.Linear(hid_sizes[0], node_size))
-        # self.encode1 = nn.Linear(nhid0, nhid1)
-        # self.decode0 = nn.Linear(nhid1, nhid0)
-        # self.decode1 = nn.Linear(nhid0, node_size)
         self.droput = droput
         self.alpha = alpha
 
@@ -35,10 +32,6 @@ class SDNE(nn.Module):
         for i in range(1,self.num_hids + 1):
             t0 = getattr(self, 'decode{}'.format(i))(t0)
             t0 = F.leaky_relu(t0)
-        # t0 = F.leaky_relu(self.encode1(t0))
-        # embedding = t0
-        # t0 = F.leaky_relu(self.decode0(t0))
-        # t0 = F.leaky_relu(self.decode1(t0))
         embedding_norm = torch.sum(embedding * embedding, dim=1, keepdim=True)  # (batch_size,1)
         L_1st = torch.sum(adj_mat * (embedding_norm -
                                      2 * torch.mm(embedding, torch.transpose(embedding, dim0=0, dim1=1))
