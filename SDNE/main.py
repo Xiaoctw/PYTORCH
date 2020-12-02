@@ -98,7 +98,7 @@ if __name__ == '__main__':
     embedding = model.savector(Adj)
     labels=dataset.read_label()
     outVec = embedding.detach().numpy()
-    embs=PCA(n_components=2).fit_transform(embedding)
+    embs=PCA(n_components=2).fit_transform(outVec)
     plt.plot(embs[:,0],embs[:,1],c=labels)
     plt.savefig('embedding.png')
     np.savetxt(args.output, outVec)
