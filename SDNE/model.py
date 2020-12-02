@@ -47,6 +47,10 @@ class SDNE(nn.Module):
         return L_1st, self.alpha * L_2nd, L_1st + self.alpha * L_2nd
 
     def savector(self, adj):
-        t0 = self.encode0(adj)
-        t0 = self.encode1(t0)
+        # t0 = self.encode0(adj)
+        # t0 = self.encode1(t0)
+        t0 = F.leaky_relu(self.encode1(adj))
+        for i in range(2, self.num_hids + 1):
+            t0 = getattr(self, 'encode{}'.format(i))(t0)
+            t0 = F.leaky_relu(t0)
         return t0
