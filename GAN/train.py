@@ -8,7 +8,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 import torch.optim as optim
-
+from pathlib import Path
 from utils import load_data, accuracy
 from model import GCN
 
@@ -35,7 +35,7 @@ args = parser.parse_args()
 args.cuda = not args.no_cuda and torch.cuda.is_available()
 
 np.random.seed(args.seed)
-torch.manual_seed(args.seed)   # 为CPU设置种子用于生成随机数，以使得结果是确定的
+torch.manual_seed(args.seed)  # 为CPU设置种子用于生成随机数，以使得结果是确定的
 if args.cuda:
     torch.cuda.manual_seed(args.seed)
 
@@ -52,13 +52,14 @@ optimizer = optim.Adam(model.parameters(),
 
 # 数据写入cuda，便于后续加速
 if args.cuda:
-    model.cuda()   # . cuda()会分配到显存里（如果gpu可用）
+    model.cuda()  # . cuda()会分配到显存里（如果gpu可用）
     features = features.cuda()
     adj = adj.cuda()
     labels = labels.cuda()
     idx_train = idx_train.cuda()
     idx_val = idx_val.cuda()
     idx_test = idx_test.cuda()
+
 
 def train(epoch):
     t = time.time()  # 返回当前时间
@@ -74,7 +75,7 @@ def train(epoch):
     # 适合最后一层是log_softmax()的网络. 损失函数 CrossEntropyLoss() 与 NLLLoss() 类似,
     # 唯一的不同是它为我们去做 softmax.可以理解为：CrossEntropyLoss()=log_softmax() + NLLLoss()
     # https://blog.csdn.net/hao5335156/article/details/80607732
-    acc_train = accuracy(output[idx_train], labels[idx_train])  #计算准确率
+    acc_train = accuracy(output[idx_train], labels[idx_train])  # 计算准确率
     loss_train.backward()  # 反向求导  Back Propagation
     optimizer.step()  # 更新所有的参数  Gradient Descent
 
@@ -83,15 +84,17 @@ def train(epoch):
         # deactivates dropout during validation run.
         model.eval()  # eval() 函数用来执行一个字符串表达式，并返回表达式的值
         output = model(features, adj)
-
-    loss_val = F.nll_loss(output[idx_val], labels[idx_val])    # 验证集的损失函数
+    # print(output[idx_val].shape)
+    # print(labels[idx_val].shape)
+    loss_val = F.nll_loss(output[idx_val], labels[idx_val])  # 验证集的损失函数
     acc_val = accuracy(output[idx_val], labels[idx_val])
-    print('Epoch: {:04d}'.format(epoch+1),
+    print('Epoch: {:04d}'.format(epoch + 1),
           'loss_train: {:.4f}'.format(loss_train.item()),
           'acc_train: {:.4f}'.format(acc_train.item()),
           'loss_val: {:.4f}'.format(loss_val.item()),
           'acc_val: {:.4f}'.format(acc_val.item()),
           'time: {:.4f}s'.format(time.time() - t))
+
 
 # 定义测试函数，相当于对已有的模型在测试集上运行对应的loss与accuracy
 def test():
@@ -103,6 +106,15 @@ def test():
           "loss= {:.4f}".format(loss_test.item()),
           "accuracy= {:.4f}".format(acc_test.item()))
 
+def save_embeddings():
+    model.eval()
+    output = model.savector(features, adj)
+    outVec = output.detach().numpy()
+    path=Path(__file__).parent/'cora'/'outVec.txt'
+    np.savetxt(path,outVec)
+    path=Path(__file__).parent/'cora'/'labels.txt'
+    np.savetxt(path,labels)
+
 
 # Train model  逐个epoch进行train，最后test
 t_total = time.time()
@@ -112,4 +124,6 @@ print("Optimization Finished!")
 print("Total time elapsed: {:.4f}s".format(time.time() - t_total))
 
 test()
+save_embeddings()
+
 

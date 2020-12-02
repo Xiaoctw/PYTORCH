@@ -58,7 +58,7 @@ def load_data(path="./cora/", dataset="cora"):
     # 所以先创建一个长度为edge_num的全1数组，每个1的填充位置就是一条边中两个端点的编号，
     # 即edges[:, 0], edges[:, 1]，矩阵的形状为(node_size, node_size)。
 
-    # build symmetric adjacency matrix   论文里A^=(D~)^0.5 A~ (D~)^0.5这个公式
+    # build symmetric adjacency matrix   构造对称的邻接矩阵 论文里A^=(D~)^0.5 A~ (D~)^0.5这个公式
     adj = adj + adj.T.multiply(adj.T > adj) - adj.multiply(adj.T > adj)
     # 对于无向图，邻接矩阵是对称的。上一步得到的adj是按有向图构建的，转换成无向图的邻接矩阵需要扩充成对称矩阵
     features = normalize(features)
