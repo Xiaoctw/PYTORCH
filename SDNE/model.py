@@ -27,12 +27,12 @@ class SDNE(nn.Module):
         self.alpha = alpha
 
     def forward(self, adj_batch, adj_mat, b_mat):
-        t0 = F.leaky_relu(self.encode0(adj_batch))
-        for i in range(1, self.num_hids + 1):
+        t0 = F.leaky_relu(self.encode1(adj_batch))
+        for i in range(2, self.num_hids + 1):
             t0 = getattr(self, 'encode{}'.format(i))(t0)
             t0 = F.leaky_relu(t0)
         embedding = t0
-        for i in range(self.num_hids + 1):
+        for i in range(1,self.num_hids + 1):
             t0 = getattr(self, 'decode{}'.format(i))(t0)
             t0 = F.leaky_relu(t0)
         # t0 = F.leaky_relu(self.encode1(t0))

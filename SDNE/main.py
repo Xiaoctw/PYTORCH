@@ -57,9 +57,8 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
-
     G, Adj, Node = dataset.Read_graph(args.input)
-    model = SDNE(Node, args.nhid0, args.nhid1, args.dropout, args.alpha)
+    model = SDNE(Node, args.hid_sizes, args.dropout, args.alpha)
     opt = optim.Adam(model.parameters(), lr=args.lr)
     scheduler = torch.optim.lr_scheduler.StepLR(opt, step_size=args.step_size, gamma=args.gamma)
     Data = dataset.DataSet(Adj, Node)
