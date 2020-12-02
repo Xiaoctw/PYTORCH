@@ -10,7 +10,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 from utils import load_data, accuracy
-from models import GCN
+from model import GCN
 
 # Training settings
 parser = argparse.ArgumentParser()
