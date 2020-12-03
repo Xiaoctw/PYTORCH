@@ -12,7 +12,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
-
+from pathlib import Path
 from utils import load_data, accuracy
 from models import GAT
 
@@ -53,16 +53,14 @@ adj, features, labels, idx_train, idx_val, idx_test = load_data()
 #                 alpha=args.alpha)
 # else:
 model = GAT(nfeat=features.shape[1],
-                nhid=args.hidden,
-                nclass=int(labels.max()) + 1,
-                dropout=args.dropout,
-                nheads=args.nb_heads,
-                alpha=args.alpha)
+            nhid=args.hidden,
+            nclass=int(labels.max()) + 1,
+            dropout=args.dropout,
+            nheads=args.nb_heads,
+            alpha=args.alpha)
 optimizer = optim.Adam(model.parameters(),
                        lr=args.lr,
                        weight_decay=args.weight_decay)
-
-
 
 if args.cuda:
     model.cuda()
@@ -94,7 +92,7 @@ def train(epoch):
 
     loss_val = F.nll_loss(output[idx_val], labels[idx_val])
     acc_val = accuracy(output[idx_val], labels[idx_val])
-    print('Epoch: {:04d}'.format(epoch+1),
+    print('Epoch: {:04d}'.format(epoch + 1),
           'loss_train: {:.4f}'.format(loss_train.data.item()),
           'acc_train: {:.4f}'.format(acc_train.data.item()),
           'loss_val: {:.4f}'.format(loss_val.data.item()),
@@ -113,6 +111,18 @@ def compute_test():
           "loss= {:.4f}".format(loss_test.item()),
           "accuracy= {:.4f}".format(acc_test.item()))
 
+
+def save_embeddings():
+    model.eval()
+    output = model.savector(features, adj)
+    outVec = output.cpu().detach().numpy()
+    path = Path(__file__).parent / 'cora' / 'outVec.txt'
+    np.savetxt(path, outVec)
+    path = Path(__file__).parent / 'cora' / 'labels.txt'
+    outLabel = labels.cpu().detach().numpy()
+    np.savetxt(path, outLabel)
+
+
 # Train model
 t_total = time.time()
 loss_values = []
@@ -123,7 +133,7 @@ for epoch in range(args.epochs):
     loss_values.append(train(epoch))
 
     torch.save(model.state_dict(), '{}.pkl'.format(epoch))
-    #把效果最好的模型保存下来
+    # 把效果最好的模型保存下来
     if loss_values[-1] < best:
         best = loss_values[-1]
         best_epoch = epoch
@@ -155,4 +165,4 @@ model.load_state_dict(torch.load('{}.pkl'.format(best_epoch)))
 
 # Testing
 compute_test()
-
+save_embeddings()
