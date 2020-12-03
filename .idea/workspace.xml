@@ -19,28 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加GCN">
-      <change afterPath="$PROJECT_DIR$/GAT/cora/labels.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAT/cora/outVec.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAT/layers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAT/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAT/train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAT/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GCN/cora/README" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GCN/cora/cora.cites" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GCN/cora/cora.content" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/cora/README" beforeDir="false" afterPath="$PROJECT_DIR$/GAT/cora/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/cora/cora.cites" beforeDir="false" afterPath="$PROJECT_DIR$/GAT/cora/cora.cites" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/cora/cora.content" beforeDir="false" afterPath="$PROJECT_DIR$/GAT/cora/cora.content" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/cora/outVec.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/cora/outVec.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/draw_cora.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/draw_cora.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/layer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDNE/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/SDNE/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDNE/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/SDNE/model.py" afterDir="false" />
-    </list>
+    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加GCN" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,6 +34,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="JupyterTrust" id="4ed03e88-c750-49c6-a338-4b0f77e14a61" />
   <component name="ProjectId" id="1gtoC6G0aCCD2SPBk2LqcuEUjID" />
@@ -223,6 +203,7 @@
       <workItem from="1606955272092" duration="2994000" />
       <workItem from="1606961205895" duration="1215000" />
       <workItem from="1606994775415" duration="47000" />
+      <workItem from="1606996127456" duration="306000" />
     </task>
     <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
       <created>1606881125583</created>
@@ -308,7 +289,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606907815983</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="添加GCN">
+      <created>1606996300097</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1606996300097</updated>
+    </task>
+    <task id="LOCAL-00014" summary="添加GCN">
+      <created>1606996394643</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1606996394643</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
