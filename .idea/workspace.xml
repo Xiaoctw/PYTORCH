@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加GCN">
+      <change afterPath="$PROJECT_DIR$/GAT/cora/labels.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAT/cora/outVec.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAT/layers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAT/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAT/train.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAT/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GCN/cora/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GCN/cora/cora.cites" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GCN/cora/cora.content" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/cora/README" beforeDir="false" afterPath="$PROJECT_DIR$/GAT/cora/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/cora/cora.cites" beforeDir="false" afterPath="$PROJECT_DIR$/GAT/cora/cora.cites" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/cora/cora.content" beforeDir="false" afterPath="$PROJECT_DIR$/GAT/cora/cora.content" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/cora/outVec.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/cora/outVec.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/draw_cora.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/draw_cora.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/layer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDNE/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/SDNE/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDNE/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/SDNE/model.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="4ed03e88-c750-49c6-a338-4b0f77e14a61" />
+  <component name="ProjectId" id="1gtoC6G0aCCD2SPBk2LqcuEUjID" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/GAT" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/GAT" />
+      <recent name="$PROJECT_DIR$/GAN" />
+      <recent name="$PROJECT_DIR$/SDNE" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.draw_cora (1)">
+    <configuration name="dataset" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYTORCH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SDNE/data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SDNE/data/dataset.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="draw_cora (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYTORCH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GCN" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GCN/draw_cora.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="draw_cora" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYTORCH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SDNE/data/cora" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SDNE/data/cora/draw_cora.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYTORCH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SDNE" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SDNE/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYTORCH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GCN" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GCN/train.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.draw_cora (1)" />
+        <item itemvalue="Python.train" />
+        <item itemvalue="Python.draw_cora" />
+        <item itemvalue="Python.dataset" />
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="" />
+      <created>1598943118324</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598943118324</updated>
+      <workItem from="1598943119366" duration="142000" />
+      <workItem from="1599628431763" duration="88000" />
+      <workItem from="1599628870329" duration="689000" />
+      <workItem from="1599634049249" duration="62000" />
+      <workItem from="1599903667448" duration="570000" />
+      <workItem from="1602239245189" duration="601000" />
+      <workItem from="1602897034172" duration="621000" />
+      <workItem from="1604217560114" duration="3205000" />
+      <workItem from="1604278904260" duration="1387000" />
+      <workItem from="1606135283347" duration="65000" />
+      <workItem from="1606135888264" duration="6000" />
+      <workItem from="1606522471561" duration="158000" />
+      <workItem from="1606877585486" duration="4647000" />
+      <workItem from="1606905774702" duration="2022000" />
+      <workItem from="1606915387331" duration="133000" />
+      <workItem from="1606955272092" duration="2994000" />
+      <workItem from="1606961205895" duration="1215000" />
+      <workItem from="1606994775415" duration="47000" />
+    </task>
+    <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
+      <created>1606881125583</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606881125583</updated>
+    </task>
+    <task id="LOCAL-00002" summary="添加了cuda设置，导入到cuda中。">
+      <created>1606881457774</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606881457774</updated>
+    </task>
+    <task id="LOCAL-00003" summary="添加生成图片">
+      <created>1606883324800</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606883324800</updated>
+    </task>
+    <task id="LOCAL-00004" summary="添加生成图片">
+      <created>1606883346515</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606883346515</updated>
+    </task>
+    <task id="LOCAL-00005" summary="更改outVec">
+      <created>1606883438282</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1606883438282</updated>
+    </task>
+    <task id="LOCAL-00006" summary="更改outVec">
+      <created>1606883541891</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1606883541891</updated>
+    </task>
+    <task id="LOCAL-00007" summary="更改outVec">
+      <created>1606883676190</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1606883676190</updated>
+    </task>
+    <task id="LOCAL-00008" summary="更改TSNE">
+      <created>1606884074933</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1606884074933</updated>
+    </task>
+    <task id="LOCAL-00009" summary="添加GCN">
+      <created>1606907448409</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1606907448409</updated>
+    </task>
+    <task id="LOCAL-00010" summary="添加GCN">
+      <created>1606907678540</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1606907678540</updated>
+    </task>
+    <task id="LOCAL-00011" summary="添加GCN">
+      <created>1606907800166</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1606907800166</updated>
+    </task>
+    <task id="LOCAL-00012" summary="添加GCN">
+      <created>1606907815983</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1606907815983</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加了cuda设置，导入到cuda中。" />
+    <MESSAGE value="添加生成图片" />
+    <MESSAGE value="更改outVec" />
+    <MESSAGE value="更改TSNE" />
+    <MESSAGE value="添加GCN" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加GCN" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="0" y="23" width="1440" height="800" key="Github.ShareDialog" timestamp="1606880669975">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="0" y="23" width="1440" height="800" key="Github.ShareDialog/0.0.1440.900@0.0.1440.900" timestamp="1606880669975" />
+    <state x="470" y="95" key="Github.UntrackedFilesDialog" timestamp="1606880684767">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="470" y="95" key="Github.UntrackedFilesDialog/0.0.1440.900@0.0.1440.900" timestamp="1606880684767" />
+    <state width="1388" height="164" key="GridCell.Tab.0.bottom" timestamp="1606959179706">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1388" height="164" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606959179706" />
+    <state width="1388" height="164" key="GridCell.Tab.0.center" timestamp="1606959179705">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1388" height="164" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606959179705" />
+    <state width="1388" height="164" key="GridCell.Tab.0.left" timestamp="1606959179704">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1388" height="164" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606959179704" />
+    <state width="1388" height="164" key="GridCell.Tab.0.right" timestamp="1606959179705">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1388" height="164" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606959179705" />
+    <state width="1388" height="205" key="GridCell.Tab.1.bottom" timestamp="1604277728381">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1388" height="205" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1604277728381" />
+    <state width="1388" height="205" key="GridCell.Tab.1.center" timestamp="1604277728380">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1388" height="205" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1604277728380" />
+    <state width="1388" height="205" key="GridCell.Tab.1.left" timestamp="1604277728380">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1388" height="205" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1604277728380" />
+    <state width="1388" height="205" key="GridCell.Tab.1.right" timestamp="1604277728381">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1388" height="205" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1604277728381" />
+    <state x="220" y="127" key="Vcs.Push.Dialog.v2" timestamp="1606907828397">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="220" y="127" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606907828397" />
+    <state width="720" height="450" key="XDebugger.FullValuePopup" timestamp="1604219849794">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="720" height="450" key="XDebugger.FullValuePopup/0.0.1440.900@0.0.1440.900" timestamp="1604219849794" />
+    <state x="479" y="354" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606884475738">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="479" y="354" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1606884475738" />
+    <state x="455" y="325" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1606880951152">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="455" y="325" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1440.900@0.0.1440.900" timestamp="1606880951152" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/file1.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PYTORCH$draw_cora__1_.coverage" NAME="draw_cora (1) Coverage Results" MODIFIED="1606958422369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
+    <SUITE FILE_PATH="coverage/PYTORCH$main.coverage" NAME="main Coverage Results" MODIFIED="1606880559595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE" />
+    <SUITE FILE_PATH="coverage/PYTORCH$train.coverage" NAME="train Coverage Results" MODIFIED="1606958408596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
+    <SUITE FILE_PATH="coverage/PYTORCH$DeepFM.coverage" NAME="DeepFM Coverage Results" MODIFIED="1599903784216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PYTORCH$.coverage" NAME="生成对抗模型 Coverage Results" MODIFIED="1604280285849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PYTORCH$draw_cora.coverage" NAME="draw_cora Coverage Results" MODIFIED="1606915414847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data/cora" />
+    <SUITE FILE_PATH="coverage/PYTORCH$dataset.coverage" NAME="dataset Coverage Results" MODIFIED="1606883037451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data" />
+  </component>
+</project>
