@@ -14,7 +14,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 
 from utils import load_data, accuracy
-from models import GAT, SpGAT
+from models import GAT
 
 # Training settings
 parser = argparse.ArgumentParser()
@@ -44,15 +44,15 @@ if args.cuda:
 adj, features, labels, idx_train, idx_val, idx_test = load_data()
 
 # Model and optimizer
-if args.sparse:
-    model = SpGAT(nfeat=features.shape[1],
-                nhid=args.hidden,
-                nclass=int(labels.max()) + 1,
-                dropout=args.dropout,
-                nheads=args.nb_heads,
-                alpha=args.alpha)
-else:
-    model = GAT(nfeat=features.shape[1],
+# if args.sparse:
+#     model = SpGAT(nfeat=features.shape[1],
+#                 nhid=args.hidden,
+#                 nclass=int(labels.max()) + 1,
+#                 dropout=args.dropout,
+#                 nheads=args.nb_heads,
+#                 alpha=args.alpha)
+# else:
+model = GAT(nfeat=features.shape[1],
                 nhid=args.hidden,
                 nclass=int(labels.max()) + 1,
                 dropout=args.dropout,

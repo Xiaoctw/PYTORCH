@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加GCN" />
+    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加GAT">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -203,7 +205,7 @@
       <workItem from="1606955272092" duration="2994000" />
       <workItem from="1606961205895" duration="1215000" />
       <workItem from="1606994775415" duration="47000" />
-      <workItem from="1606996127456" duration="306000" />
+      <workItem from="1606996127456" duration="590000" />
     </task>
     <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
       <created>1606881125583</created>
@@ -303,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606996394643</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="添加GAT">
+      <created>1606996557880</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1606996557880</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +336,8 @@
     <MESSAGE value="更改outVec" />
     <MESSAGE value="更改TSNE" />
     <MESSAGE value="添加GCN" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加GCN" />
+    <MESSAGE value="添加GAT" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加GAT" />
   </component>
   <component name="WindowStateProjectService">
     <state x="0" y="23" width="1440" height="800" key="Github.ShareDialog" timestamp="1606880669975">
@@ -370,18 +380,18 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1388" height="205" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1604277728381" />
-    <state x="220" y="127" key="Vcs.Push.Dialog.v2" timestamp="1606907828397">
+    <state x="220" y="127" key="Vcs.Push.Dialog.v2" timestamp="1606996401069">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="220" y="127" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606907828397" />
+    <state x="220" y="127" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606996401069" />
     <state width="720" height="450" key="XDebugger.FullValuePopup" timestamp="1604219849794">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="720" height="450" key="XDebugger.FullValuePopup/0.0.1440.900@0.0.1440.900" timestamp="1604219849794" />
-    <state x="479" y="354" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606884475738">
+    <state x="479" y="354" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606996356380">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="479" y="354" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1606884475738" />
+    <state x="479" y="354" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1606996356380" />
     <state x="455" y="325" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1606880951152">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
