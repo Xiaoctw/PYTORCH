@@ -38,8 +38,9 @@ class GraphAttentionLayer(nn.Module):
 
         zero_vec = -9e15 * torch.ones_like(e)
         # 维度大小与e相同，所有元素都是-9*10的15次方
-
-        attention = torch.where(adj > 0, e, zero_vec)
+        zero_vec=zero_vec.mul((adj <= 0).int())
+       # attention = torch.where(adj > 0, e, zero_vec)
+        attention = e.add(zero_vec)
         '''这里我们回想一下在utils.py里adj怎么建成的：两个节点有边，则为1，否则为0。
         故adj的领接矩阵的大小为[2708,2708]。(不熟的自己去复习一下图结构中的领接矩阵)。
         print(adj）这里我们看其中一个adj
