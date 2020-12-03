@@ -70,7 +70,7 @@ def load_data(path="./cora/", dataset="cora"):
 
     features = torch.FloatTensor(np.array(features.todense()))  # tensor为pytorch常用的数据结构
     labels = torch.LongTensor(np.where(labels)[1])
-    adj = sparse_mx_to_torch_sparse_tensor(adj)   # 邻接矩阵转为tensor处理
+    adj = torch.FloatTensor(adj.todense()) # 邻接矩阵转为tensor处理
 
     idx_train = torch.LongTensor(idx_train)
     idx_val = torch.LongTensor(idx_val)

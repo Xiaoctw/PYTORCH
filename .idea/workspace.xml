@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加GAT" />
+    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加GAT">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAT/layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAT/layer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAT/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAT/utils.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,7 +208,7 @@
       <workItem from="1606961205895" duration="1215000" />
       <workItem from="1606994775415" duration="47000" />
       <workItem from="1606996127456" duration="590000" />
-      <workItem from="1606996913382" duration="338000" />
+      <workItem from="1606996913382" duration="464000" />
     </task>
     <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
       <created>1606881125583</created>
