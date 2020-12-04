@@ -37,15 +37,15 @@ def load_data(dataset="cora"):
     # build graph
     # cites file的每一行格式为：  <cited paper ID>  <citing paper ID>
     # 根据前面的contents与这里的cites创建图，算出edges矩阵与adj 矩阵
-    idx = np.array(idx_features_labels[:, 0], dtype=np.int32)
+    idx = np.array(idx_features_labels[:, 0], dtype=str)
     idx_map = {j: i for i, j in enumerate(idx)}
     # 由于文件中节点并非是按顺序排列的，因此建立一个编号为0-(node_size-1)的哈希表idx_map，
     # 哈希表中每一项为id: number，即节点id对应的编号为number
     edges_unordered = np.genfromtxt("{}{}.cites".format(path, dataset),
-                                    dtype=np.int32)
+                                    dtype=str)
     # edges_unordered为直接从边表文件中直接读取的结果，是一个(edge_num, 2)的数组，每一行表示一条边两个端点的idx
     edges = np.array(list(map(idx_map.get, edges_unordered.flatten())),  # flatten：降维，返回一维数组
-                     dtype=np.int32).reshape(edges_unordered.shape)
+                     dtype=np.int).reshape(edges_unordered.shape)
     # 边的edges_unordered中存储的是端点id，要将每一项的id换成编号。
     # 在idx_map中以idx作为键查找得到对应节点的编号，reshape成与edges_unordered形状一样的数组
     adj = sp.coo_matrix((np.ones(edges.shape[0]), (edges[:, 0], edges[:, 1])),  # coo型稀疏矩阵
