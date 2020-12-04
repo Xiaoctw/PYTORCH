@@ -129,16 +129,16 @@ if __name__ == '__main__':
             #  adj_batch = adj_batch[:, idx]
             features_batch = features[idx]
             labels_batch = labels[idx]
-            output_batch = model(adj_batch, features_batch)
+            output_batch = model(features_batch,adj_batch)
             loss_train = F.nll_loss(output_batch, labels_batch)
             loss_train.backward()
             loss_.append(loss_train.item())
             optimizer.step()
 
         model.eval()
-        output_eval = model(features[idx_val])
-        acc_val = accuracy(output_eval, labels[idx_val])
-        loss_val = F.nll_loss(output_eval, labels[idx_val])
+        output_eval = model(features,adj)
+        acc_val = accuracy(output_eval[idx_val], labels[idx_val])
+        loss_val = F.nll_loss(output_eval[idx_val], labels[idx_val])
         print('Epoch: {:04d}'.format(epoch + 1),
               'loss_train: {:.4f}'.format(np.mean(loss_)),
               'loss_val: {:.4f}'.format(loss_val.data.item()),
