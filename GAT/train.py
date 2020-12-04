@@ -30,9 +30,11 @@ parser.add_argument('--nb_heads', type=int, default=8, help='Number of head atte
 parser.add_argument('--dropout', type=float, default=0.6, help='Dropout rate (1 - keep probability).')
 parser.add_argument('--alpha', type=float, default=0.2, help='Alpha for the leaky_relu.')
 parser.add_argument('--patience', type=int, default=100, help='Patience')
+parser.add_argument('--dataset', type=int, default='cora', choices=['cora', 'citeseer'])
 
 args = parser.parse_args()
 args.cuda = not args.no_cuda and torch.cuda.is_available()
+dataset = args.dataset
 
 random.seed(args.seed)
 np.random.seed(args.seed)
@@ -41,7 +43,7 @@ if args.cuda:
     torch.cuda.manual_seed(args.seed)
 
 # Load data
-adj, features, labels, idx_train, idx_val, idx_test = load_data()
+adj, features, labels, idx_train, idx_val, idx_test = load_data(dataset)
 
 # Model and optimizer
 # if args.sparse:
@@ -116,9 +118,9 @@ def save_embeddings():
     model.eval()
     output = model.savector(features, adj)
     outVec = output.cpu().detach().numpy()
-    path = Path(__file__).parent / 'cora' / 'outVec.txt'
+    path = Path(__file__).parent / dataset / 'outVec.txt'
     np.savetxt(path, outVec)
-    path = Path(__file__).parent / 'cora' / 'labels.txt'
+    path = Path(__file__).parent / dataset / 'labels.txt'
     outLabel = labels.cpu().detach().numpy()
     np.savetxt(path, outLabel)
 
