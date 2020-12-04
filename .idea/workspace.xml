@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加GAT">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GAT/layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAT/layer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GAT/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAT/main.py" afterDir="false" />
     </list>

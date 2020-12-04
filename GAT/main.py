@@ -141,12 +141,16 @@ if __name__ == '__main__':
             optimizer.step()
 
         model.eval()
+        features_eval = features[idx_val]
+        adj_val = adj[idx_val][:, idx_val]
+        labels_eval = labels[idx_val]
         if args.cuda:
-            features = features.cuda()
-            adj = adj.cuda()
-        output_eval = model(features, adj)
-        acc_val = accuracy(output_eval[idx_val], labels[idx_val])
-        loss_val = F.nll_loss(output_eval[idx_val], labels[idx_val])
+            features_eval = features_eval.cuda()
+            adj_val = adj_val.cuda()
+            labels_eval=labels_eval.cuda()
+        output_eval = model(features_eval, adj_val)
+        acc_val = accuracy(output_eval, labels_eval)
+        loss_val = F.nll_loss(output_eval, labels_eval)
         print('Epoch: {:04d}'.format(epoch + 1),
               'loss_train: {:.4f}'.format(np.mean(loss_)),
               'loss_val: {:.4f}'.format(loss_val.data.item()),
