@@ -17,7 +17,7 @@ from utils import load_data, accuracy
 from models import GAT
 from torch.utils import data
 from torch.utils.data import DataLoader
-from train import *
+
 
 # Training settings
 parser = argparse.ArgumentParser()
