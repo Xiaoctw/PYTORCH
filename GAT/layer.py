@@ -22,8 +22,8 @@ class GraphAttentionLayer(nn.Module):
         self.leakyrelu = nn.LeakyReLU(self.alpha)
 
     def forward(self, input, adj):
-        print(input.shape)
-        print(self.W.shape)
+        # print(input.shape)
+        # print(self.W.shape)
         h = torch.mm(input, self.W)
         # print(h.shape)  torch.Size([2708, 8]) 8是label的个数
         N = h.size()[0]

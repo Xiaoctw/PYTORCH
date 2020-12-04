@@ -18,7 +18,6 @@ from models import GAT
 from torch.utils import data
 from torch.utils.data import DataLoader
 
-
 # Training settings
 parser = argparse.ArgumentParser()
 parser.add_argument('--no-cuda', action='store_true', default=False, help='Disables CUDA training.')
@@ -49,7 +48,7 @@ class DataSet(data.Dataset):
 
     def __init__(self, Adj, features):
         self.Adj = Adj
-        self.features=features
+        self.features = features
 
     def __getitem__(self, index):
         return index
@@ -85,6 +84,7 @@ if args.cuda:
     # idx_val = idx_val.cuda()
     # idx_test = idx_test.cuda()
 
+
 def compute_test():
     model.eval()
     output = model(features, adj)
@@ -104,16 +104,18 @@ def save_embeddings():
     path = Path(__file__).parent / 'cora' / 'labels.txt'
     outLabel = labels.cpu().detach().numpy()
     np.savetxt(path, outLabel)
+
+
 if __name__ == '__main__':
     t_total = time.time()
     if args.cuda:
         model.cuda()
-        features = features.cuda()
-        adj = adj.cuda()
-        labels = labels.cuda()
-        idx_train = idx_train.cuda()
-        idx_val = idx_val.cuda()
-        idx_test = idx_test.cuda()
+        # features = features.cuda()
+        # adj = adj.cuda()
+        # labels = labels.cuda()
+        # idx_train = idx_train.cuda()
+        # idx_val = idx_val.cuda()
+        # idx_test = idx_test.cuda()
     t = time.time()
     loss_values = []
     bad_counter = 0
@@ -123,20 +125,26 @@ if __name__ == '__main__':
     dataLoader = DataLoader(dataset=data, batch_size=args.batch_size, shuffle=True)
     for epoch in range(args.epochs):
         model.train()
-        loss_=[]
+        loss_ = []
         for idx in dataLoader:
             adj_batch = adj[idx][:, idx]
-            #  adj_batch = adj_batch[:, idx]
             features_batch = features[idx]
             labels_batch = labels[idx]
-            output_batch = model(features_batch,adj_batch)
+            if args.cuda:
+                adj_batch=adj_batch.cuda()
+                features_batch = features_batch.cuda()
+                labels_batch = labels_batch.cuda()
+            output_batch = model(features_batch, adj_batch)
             loss_train = F.nll_loss(output_batch, labels_batch)
             loss_train.backward()
             loss_.append(loss_train.item())
             optimizer.step()
 
         model.eval()
-        output_eval = model(features,adj)
+        if args.cuda:
+            features = features.cuda()
+            adj = adj.cuda()
+        output_eval = model(features, adj)
         acc_val = accuracy(output_eval[idx_val], labels[idx_val])
         loss_val = F.nll_loss(output_eval[idx_val], labels[idx_val])
         print('Epoch: {:04d}'.format(epoch + 1),
