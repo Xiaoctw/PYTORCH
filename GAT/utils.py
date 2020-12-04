@@ -44,8 +44,15 @@ def load_data(dataset="cora"):
     edges_unordered = np.genfromtxt("{}{}.cites".format(path, dataset),
                                     dtype=str)
     # edges_unordered为直接从边表文件中直接读取的结果，是一个(edge_num, 2)的数组，每一行表示一条边两个端点的idx
-    edges = np.array(list(map(idx_map.get, edges_unordered.flatten())),  # flatten：降维，返回一维数组
-                     dtype=np.int).reshape(edges_unordered.shape)
+    # edges = np.array(list(map(idx_map.get, edges_unordered.flatten())),  # flatten：降维，返回一维数组
+    #                  dtype=np.int).reshape(edges_unordered.shape)
+    edges=[]
+    for i in range(len(edges_unordered)):
+        idx1=idx_map.get(edges_unordered[i][0])
+        idx2=idx_map.get(edges_unordered[i][1])
+        if idx1 is not None and idx2 is not None:
+            edges.append([idx1,idx2])
+    edges=np.array(edges)
     # 边的edges_unordered中存储的是端点id，要将每一项的id换成编号。
     # 在idx_map中以idx作为键查找得到对应节点的编号，reshape成与edges_unordered形状一样的数组
     adj = sp.coo_matrix((np.ones(edges.shape[0]), (edges[:, 0], edges[:, 1])),  # coo型稀疏矩阵
