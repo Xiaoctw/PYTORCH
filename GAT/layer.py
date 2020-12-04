@@ -28,9 +28,15 @@ class GraphAttentionLayer(nn.Module):
         N = h.size()[0]
         # print(N)  2708 nodes的个数
 
-        a_input = torch.cat([h.repeat(1, N).view(N * N, -1), h.repeat(N, 1)], dim=1).view(N, -1,
-                                                                                          2 * self.out_features)  # 见下图
+        # a_input = torch.cat([h.repeat(1, N).view(N * N, -1), h.repeat(N, 1)], dim=1).view(N, -1,
+        #                                                                                   2 * self.out_features)  # 见下图
         # print(a_input.shape)  torch.Size([2708, 2708, 16])
+        idxs1, idxs2 = [], []
+        for i in range(N):
+            for j in range(N):
+                idxs1.append(i)
+                idxs2.append(j)
+        a_input = torch.cat([h[idxs1], h[idxs2]], dim=1).view(N, N, -1)
 
         e = self.leakyrelu(torch.matmul(a_input, self.a).squeeze(2))  # 即论文里的eij
         # squeeze除去维数为1的维度
@@ -68,6 +74,7 @@ class GraphAttentionLayer(nn.Module):
         attention = F.dropout(attention, self.dropout, training=self.training)
         h_prime = torch.matmul(attention, h)
 
+        # 如果concat, 说明后面还有层，加上个激活函数，如果没有层那么concat为负值，直接返回
         if self.concat:
             return F.elu(h_prime)
         else:
