@@ -43,7 +43,7 @@ if args.cuda:
     torch.cuda.manual_seed(args.seed)
 
 # Load data
-adj, features, labels, idx_train, idx_val, idx_test = load_data(dataset)
+adj, features, labels = load_data(dataset)
 
 # Model and optimizer
 # if args.sparse:
@@ -63,6 +63,21 @@ model = GAT(nfeat=features.shape[1],
 optimizer = optim.Adam(model.parameters(),
                        lr=args.lr,
                        weight_decay=args.weight_decay)
+
+if dataset=='cora':
+    idx_train = range(140)
+    idx_val = range(200, 500)
+    idx_test = range(500, 1500)
+    idx_train = torch.LongTensor(idx_train)
+    idx_val = torch.LongTensor(idx_val)
+    idx_test = torch.LongTensor(idx_test)
+elif dataset=='citeseer':
+    idx_train = range(120)
+    idx_val = range(200, 700)
+    idx_test = range(700, 1700)
+    idx_train = torch.LongTensor(idx_train)
+    idx_val = torch.LongTensor(idx_val)
+    idx_test = torch.LongTensor(idx_test)
 
 if args.cuda:
     model.cuda()
@@ -131,6 +146,7 @@ loss_values = []
 bad_counter = 0
 best = args.epochs + 1
 best_epoch = 0
+
 for epoch in range(args.epochs):
     loss_values.append(train(epoch))
     torch.save(model.state_dict(), '{}.pkl'.format(epoch))

@@ -71,19 +71,14 @@ def load_data(dataset="cora"):
     # 对应公式A~=A+IN
 
     # 分别构建训练集、验证集、测试集，并创建特征矩阵、标签向量和邻接矩阵的tensor，用来做模型的输入
-    idx_train = range(140)
-    idx_val = range(200, 500)
-    idx_test = range(500, 1500)
+
 
     features = torch.FloatTensor(np.array(features.todense()))  # tensor为pytorch常用的数据结构
     labels = torch.LongTensor(np.where(labels)[1])
     adj = torch.FloatTensor(adj.todense()) # 邻接矩阵转为tensor处理
 
-    idx_train = torch.LongTensor(idx_train)
-    idx_val = torch.LongTensor(idx_val)
-    idx_test = torch.LongTensor(idx_test)
 
-    return adj, features, labels, idx_train, idx_val, idx_test
+    return adj, features, labels
 
 def normalize(mx):
     """Row-normalize sparse matrix"""
