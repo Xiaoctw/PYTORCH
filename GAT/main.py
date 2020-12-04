@@ -25,14 +25,14 @@ parser.add_argument('--fastmode', action='store_true', default=False, help='Vali
 parser.add_argument('--sparse', action='store_true', default=False, help='GAT with sparse version or not.')
 parser.add_argument('--seed', type=int, default=72, help='Random seed.')
 parser.add_argument('--epochs', type=int, default=100, help='Number of epochs to train.')
-parser.add_argument('--lr', type=float, default=0.005, help='Initial learning rate.')
+parser.add_argument('--lr', type=float, default=3e-4, help='Initial learning rate.')
 parser.add_argument('--weight_decay', type=float, default=5e-4, help='Weight decay (L2 loss on parameters).')
 parser.add_argument('--hidden', type=int, default=8, help='Number of hidden units.')
 parser.add_argument('--nb_heads', type=int, default=8, help='Number of head attentions.')
 parser.add_argument('--dropout', type=float, default=0.6, help='Dropout rate (1 - keep probability).')
 parser.add_argument('--alpha', type=float, default=0.2, help='Alpha for the leaky_relu.')
-parser.add_argument('--patience', type=int, default=100, help='Patience')
-parser.add_argument('--batch_size', type=int, default=32, help='batch_size')
+parser.add_argument('--patience', type=int, default=200, help='Patience')
+parser.add_argument('--batch_size', type=int, default=128, help='batch_size')
 
 args = parser.parse_args()
 args.cuda = not args.no_cuda and torch.cuda.is_available()
@@ -110,12 +110,6 @@ if __name__ == '__main__':
     t_total = time.time()
     if args.cuda:
         model.cuda()
-        # features = features.cuda()
-        # adj = adj.cuda()
-        # labels = labels.cuda()
-        # idx_train = idx_train.cuda()
-        # idx_val = idx_val.cuda()
-        # idx_test = idx_test.cuda()
     t = time.time()
     loss_values = []
     bad_counter = 0
@@ -137,7 +131,7 @@ if __name__ == '__main__':
             output_batch = model(features_batch, adj_batch)
             loss_train = F.nll_loss(output_batch, labels_batch)
             loss_train.backward()
-            loss_.append(loss_train.item())
+            loss_.append(loss_train.data.item())
             optimizer.step()
 
         model.eval()
@@ -156,24 +150,7 @@ if __name__ == '__main__':
               'loss_val: {:.4f}'.format(loss_val.data.item()),
               'acc_val: {:.4f}'.format(acc_val.data.item()),
               'time: {:.4f}s'.format(time.time() - t))
-        # loss_values.append(train(epoch))
-        # torch.save(model.state_dict(), '{}.pkl'.format(epoch))
-        # # 把效果最好的模型保存下来
-        # if loss_values[-1] < best:
-        #     best = loss_values[-1]
-        #     best_epoch = epoch
-        #     bad_counter = 0
-        # else:
-        #     bad_counter += 1
-        #
-        # if bad_counter == args.patience:
-        #     break
-        #
-        # files = glob.glob('*.pkl')
-        # for file in files:
-        #     epoch_nb = int(file.split('.')[0])
-        #     if epoch_nb < best_epoch:
-        #         os.remove(file)
+        t=time.time()
     print("Optimization Finished!")
     print("Total time elapsed: {:.4f}s".format(time.time() - t_total))
 
