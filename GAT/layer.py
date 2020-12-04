@@ -13,7 +13,6 @@ class GraphAttentionLayer(nn.Module):
         self.out_features = out_features
         self.alpha = alpha  # 学习因子
         self.concat = concat
-
         self.W = nn.Parameter(torch.zeros(size=(in_features, out_features)))  # 建立都是0的矩阵，大小为（输入维度，输出维度）
         nn.init.xavier_uniform_(self.W.data, gain=1.414)  # xavier初始化
         self.a = nn.Parameter(torch.zeros(size=(2 * out_features, 1)))  # 见下图
@@ -28,15 +27,17 @@ class GraphAttentionLayer(nn.Module):
         N = h.size()[0]
         # print(N)  2708 nodes的个数
 
-        # a_input = torch.cat([h.repeat(1, N).view(N * N, -1), h.repeat(N, 1)], dim=1).view(N, -1,
-        #                                                                                   2 * self.out_features)  # 见下图
+        #计算attention的方便简单的方法
+        a_input = torch.cat([h.repeat(1, N).view(N * N, -1), h.repeat(N, 1)], dim=1).view(N, -1,
+                                                                                          2 * self.out_features)  # 见下图
         # print(a_input.shape)  torch.Size([2708, 2708, 16])
-        idxs1, idxs2 = [], []
-        for i in range(N):
-            for j in range(N):
-                idxs1.append(i)
-                idxs2.append(j)
-        a_input = torch.cat([h[idxs1], h[idxs2]], dim=1).view(N, N, -1)
+        # idxs1, idxs2 = [], []
+        # 这样添加太慢了
+        # for i in range(N):
+        #     for j in range(N):
+        #         idxs1.append(i)
+        #         idxs2.append(j)
+        # a_input = torch.cat([h[idxs1], h[idxs2]], dim=1).view(N, N, -1)
 
         e = self.leakyrelu(torch.matmul(a_input, self.a).squeeze(2))  # 即论文里的eij
         # squeeze除去维数为1的维度

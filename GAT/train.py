@@ -131,7 +131,6 @@ best = args.epochs + 1
 best_epoch = 0
 for epoch in range(args.epochs):
     loss_values.append(train(epoch))
-
     torch.save(model.state_dict(), '{}.pkl'.format(epoch))
     # 把效果最好的模型保存下来
     if loss_values[-1] < best:
