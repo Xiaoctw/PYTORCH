@@ -95,9 +95,9 @@ if dataset=='cora':
     idx_val = torch.LongTensor(idx_val)
     idx_test = torch.LongTensor(idx_test)
 elif dataset=='citeseer':
-    idx_train = range(500,620)
-    idx_val = range(500)
-    idx_test = range(700, 1700)
+    idx_train = range(500)
+    idx_val = range(500,1000)
+    idx_test = range(1000, 1700)
     idx_train = torch.LongTensor(idx_train)
     idx_val = torch.LongTensor(idx_val)
     idx_test = torch.LongTensor(idx_test)
