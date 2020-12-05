@@ -40,7 +40,6 @@ def train(epoch):
     acc_train = accuracy(output[idx_train], labels[idx_train])
     loss_train.backward()
     optimizer.step()
-
     if not args.fastmode:
         # Evaluate validation set performance separately,
         # deactivates dropout during validation run.
@@ -54,7 +53,6 @@ def train(epoch):
           'loss_val: {:.4f}'.format(loss_val.data.item()),
           'acc_val: {:.4f}'.format(acc_val.data.item()),
           'time: {:.4f}s'.format(time.time() - t))
-
     return loss_val.data.item()
 
 
@@ -148,18 +146,16 @@ if __name__ == '__main__':
             if epoch_nb < best_epoch:
                 os.remove(file)
 
-    files = glob.glob('*.pkl')
-    for file in files:
-        epoch_nb = int(file.split('.')[0])
-        if epoch_nb > best_epoch:
-            os.remove(file)
-
+    # files = glob.glob('*.pkl')
+    # for file in files:
+    #     epoch_nb = int(file.split('.')[0])
+    #     if epoch_nb > best_epoch:
+    #         os.remove(file)
     print("Optimization Finished!")
     print("Total time elapsed: {:.4f}s".format(time.time() - t_total))
-
     # Restore best model
-    print('Loading {}th epoch'.format(best_epoch))
-    model.load_state_dict(torch.load('{}.pkl'.format(best_epoch)))
+    # print('Loading {}th epoch'.format(best_epoch))
+    # model.load_state_dict(torch.load('{}.pkl'.format(best_epoch)))
     # Testing
     compute_test()
     save_embeddings()
