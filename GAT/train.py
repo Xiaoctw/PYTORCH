@@ -59,8 +59,8 @@ def train(epoch):
 def compute_test():
     model.eval()
     output = model(features, adj)
-    loss_test = F.nll_loss(output[idx_test], labels[idx_test])
-    acc_test = accuracy(output[idx_test], labels[idx_test])
+    loss_test = F.nll_loss(output[idx_val], labels[idx_val])
+    acc_test = accuracy(output[idx_val], labels[idx_val])
     print("Test set results:",
           "loss= {:.4f}".format(loss_test.item()),
           "accuracy= {:.4f}".format(acc_test.item()))
@@ -128,8 +128,6 @@ if __name__ == '__main__':
         idx_test = idx_test.cuda()
     for epoch in range(args.epochs):
         loss_values.append(train(epoch))
-        torch.save(model.state_dict(), '{}.pkl'.format(epoch))
-        # 把效果最好的模型保存下来
         if loss_values[-1] < best:
             best = loss_values[-1]
             best_epoch = epoch
@@ -139,23 +137,7 @@ if __name__ == '__main__':
 
         if bad_counter == args.patience:
             break
-
-        # files = glob.glob('*.pkl')
-        # for file in files:
-        #     epoch_nb = int(file.split('.')[0])
-        #     if epoch_nb < best_epoch:
-        #         os.remove(file)
-
-    # files = glob.glob('*.pkl')
-    # for file in files:
-    #     epoch_nb = int(file.split('.')[0])
-    #     if epoch_nb > best_epoch:
-    #         os.remove(file)
     print("Optimization Finished!")
     print("Total time elapsed: {:.4f}s".format(time.time() - t_total))
-    # Restore best model
-    # print('Loading {}th epoch'.format(best_epoch))
-    # model.load_state_dict(torch.load('{}.pkl'.format(best_epoch)))
-    # Testing
     compute_test()
     save_embeddings()
