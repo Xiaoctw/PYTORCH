@@ -29,7 +29,7 @@ parser.add_argument('--lr', type=float, default=3e-4, help='Initial learning rat
 parser.add_argument('--weight_decay', type=float, default=5e-4, help='Weight decay (L2 loss on parameters).')
 parser.add_argument('--hidden', type=int, default=8, help='Number of hidden units.')
 parser.add_argument('--nb_heads', type=int, default=8, help='Number of head attentions.')
-parser.add_argument('--dropout', type=float, default=0.6, help='Dropout rate (1 - keep probability).')
+parser.add_argument('--dropout', type=float, default=0.2, help='Dropout rate (1 - keep probability).')
 parser.add_argument('--alpha', type=float, default=0.2, help='Alpha for the leaky_relu.')
 parser.add_argument('--patience', type=int, default=200, help='Patience')
 parser.add_argument('--batch_size', type=int, default=128, help='batch_size')
@@ -95,13 +95,13 @@ def compute_test():
           "accuracy= {:.4f}".format(acc_test.item()))
 
 
-def save_embeddings():
+def save_embeddings(dataset):
     model.eval()
     output = model.savector(features, adj)
     outVec = output.cpu().detach().numpy()
-    path = Path(__file__).parent / 'cora' / 'outVec.txt'
+    path = Path(__file__).parent / dataset / 'outVec.txt'
     np.savetxt(path, outVec)
-    path = Path(__file__).parent / 'cora' / 'labels.txt'
+    path = Path(__file__).parent / dataset / 'labels.txt'
     outLabel = labels.cpu().detach().numpy()
     np.savetxt(path, outLabel)
 
@@ -158,4 +158,4 @@ if __name__ == '__main__':
     # print('Loading {}th epoch'.format(best_epoch))
     # model.load_state_dict(torch.load('{}.pkl'.format(best_epoch)))
     compute_test()
-    save_embeddings()
+    save_embeddings(dataset=args.dataset)
