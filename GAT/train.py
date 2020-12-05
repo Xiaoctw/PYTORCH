@@ -31,66 +31,6 @@ parser.add_argument('--dropout', type=float, default=0.6, help='Dropout rate (1 
 parser.add_argument('--alpha', type=float, default=0.2, help='Alpha for the leaky_relu.')
 parser.add_argument('--patience', type=int, default=100, help='Patience')
 parser.add_argument('--dataset', type=str, default='citeseer', choices=['cora', 'citeseer'])
-
-args = parser.parse_args()
-args.cuda = not args.no_cuda and torch.cuda.is_available()
-dataset = args.dataset
-
-random.seed(args.seed)
-np.random.seed(args.seed)
-torch.manual_seed(args.seed)
-if args.cuda:
-    torch.cuda.manual_seed(args.seed)
-
-# Load data
-adj, features, labels = load_data(dataset)
-
-# Model and optimizer
-# if args.sparse:
-#     model = SpGAT(nfeat=features.shape[1],
-#                 nhid=args.hidden,
-#                 nclass=int(labels.max()) + 1,
-#                 dropout=args.dropout,
-#                 nheads=args.nb_heads,
-#                 alpha=args.alpha)
-# else:
-model = GAT(nfeat=features.shape[1],
-            nhid=args.hidden,
-            nclass=int(labels.max()) + 1,
-            dropout=args.dropout,
-            nheads=args.nb_heads,
-            alpha=args.alpha)
-optimizer = optim.Adam(model.parameters(),
-                       lr=args.lr,
-                       weight_decay=args.weight_decay)
-
-if dataset=='cora':
-    idx_train = range(140)
-    idx_val = range(200, 500)
-    idx_test = range(500, 1500)
-    idx_train = torch.LongTensor(idx_train)
-    idx_val = torch.LongTensor(idx_val)
-    idx_test = torch.LongTensor(idx_test)
-elif dataset=='citeseer':
-    idx_train = range(120)
-    idx_val = range(200, 700)
-    idx_test = range(700, 1700)
-    idx_train = torch.LongTensor(idx_train)
-    idx_val = torch.LongTensor(idx_val)
-    idx_test = torch.LongTensor(idx_test)
-
-if args.cuda:
-    model.cuda()
-    features = features.cuda()
-    adj = adj.cuda()
-    labels = labels.cuda()
-    idx_train = idx_train.cuda()
-    idx_val = idx_val.cuda()
-    idx_test = idx_test.cuda()
-
-features, adj, labels = Variable(features), Variable(adj), Variable(labels)
-
-
 def train(epoch):
     t = time.time()
     model.train()
@@ -106,7 +46,6 @@ def train(epoch):
         # deactivates dropout during validation run.
         model.eval()
         output = model(features, adj)
-
     loss_val = F.nll_loss(output[idx_val], labels[idx_val])
     acc_val = accuracy(output[idx_val], labels[idx_val])
     print('Epoch: {:04d}'.format(epoch + 1),
@@ -139,6 +78,29 @@ def save_embeddings():
     outLabel = labels.cpu().detach().numpy()
     np.savetxt(path, outLabel)
 
+args = parser.parse_args()
+args.cuda = not args.no_cuda and torch.cuda.is_available()
+dataset = args.dataset
+random.seed(args.seed)
+np.random.seed(args.seed)
+torch.manual_seed(args.seed)
+if args.cuda:
+    torch.cuda.manual_seed(args.seed)
+# Load data
+if dataset=='cora':
+    idx_train = range(140)
+    idx_val = range(200, 500)
+    idx_test = range(500, 1500)
+    idx_train = torch.LongTensor(idx_train)
+    idx_val = torch.LongTensor(idx_val)
+    idx_test = torch.LongTensor(idx_test)
+elif dataset=='citeseer':
+    idx_train = range(500,620)
+    idx_val = range(500)
+    idx_test = range(700, 1700)
+    idx_train = torch.LongTensor(idx_train)
+    idx_val = torch.LongTensor(idx_val)
+    idx_test = torch.LongTensor(idx_test)
 
 # Train model
 t_total = time.time()
@@ -147,39 +109,57 @@ bad_counter = 0
 best = args.epochs + 1
 best_epoch = 0
 
-for epoch in range(args.epochs):
-    loss_values.append(train(epoch))
-    torch.save(model.state_dict(), '{}.pkl'.format(epoch))
-    # 把效果最好的模型保存下来
-    if loss_values[-1] < best:
-        best = loss_values[-1]
-        best_epoch = epoch
-        bad_counter = 0
-    else:
-        bad_counter += 1
+if __name__ == '__main__':
+    adj, features, labels = load_data(dataset)
+    model = GAT(nfeat=features.shape[1],
+                nhid=args.hidden,
+                nclass=int(labels.max()) + 1,
+                dropout=args.dropout,
+                nheads=args.nb_heads,
+                alpha=args.alpha)
+    optimizer = optim.Adam(model.parameters(),
+                           lr=args.lr,
+                           weight_decay=args.weight_decay)
+    if args.cuda:
+        model.cuda()
+        features = features.cuda()
+        adj = adj.cuda()
+        labels = labels.cuda()
+        idx_train = idx_train.cuda()
+        idx_val = idx_val.cuda()
+        idx_test = idx_test.cuda()
+    for epoch in range(args.epochs):
+        loss_values.append(train(epoch))
+        torch.save(model.state_dict(), '{}.pkl'.format(epoch))
+        # 把效果最好的模型保存下来
+        if loss_values[-1] < best:
+            best = loss_values[-1]
+            best_epoch = epoch
+            bad_counter = 0
+        else:
+            bad_counter += 1
 
-    if bad_counter == args.patience:
-        break
+        if bad_counter == args.patience:
+            break
+
+        files = glob.glob('*.pkl')
+        for file in files:
+            epoch_nb = int(file.split('.')[0])
+            if epoch_nb < best_epoch:
+                os.remove(file)
 
     files = glob.glob('*.pkl')
     for file in files:
         epoch_nb = int(file.split('.')[0])
-        if epoch_nb < best_epoch:
+        if epoch_nb > best_epoch:
             os.remove(file)
 
-files = glob.glob('*.pkl')
-for file in files:
-    epoch_nb = int(file.split('.')[0])
-    if epoch_nb > best_epoch:
-        os.remove(file)
+    print("Optimization Finished!")
+    print("Total time elapsed: {:.4f}s".format(time.time() - t_total))
 
-print("Optimization Finished!")
-print("Total time elapsed: {:.4f}s".format(time.time() - t_total))
-
-# Restore best model
-print('Loading {}th epoch'.format(best_epoch))
-model.load_state_dict(torch.load('{}.pkl'.format(best_epoch)))
-
-# Testing
-compute_test()
-save_embeddings()
+    # Restore best model
+    print('Loading {}th epoch'.format(best_epoch))
+    model.load_state_dict(torch.load('{}.pkl'.format(best_epoch)))
+    # Testing
+    compute_test()
+    save_embeddings()
