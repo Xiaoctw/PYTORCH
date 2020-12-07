@@ -97,9 +97,11 @@ if dataset=='cora':
     idx_val = torch.LongTensor(idx_val)
     idx_test = torch.LongTensor(idx_test)
 elif dataset=='citeseer':
-    idx_train = range(120)
-    idx_val = range(600,1600)
-    idx_test = range(500,600)
+    idxes=np.arange(1600)
+    np.random.shuffle(idxes)
+    idx_train = idxes[:120]
+    idx_val = idxes[500:600]
+    idx_test =idxes[600,1600]
     idx_train = torch.LongTensor(idx_train)
     idx_val = torch.LongTensor(idx_val)
     idx_test = torch.LongTensor(idx_test)
