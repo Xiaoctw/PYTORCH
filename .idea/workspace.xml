@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加GAT" />
+    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加GAT">
+      <change afterPath="$PROJECT_DIR$/各种损失函数.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GCN/draw_cora.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/draw_cora.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +60,29 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.draw_cora (1)">
+  <component name="RunManager" selected="Python.各种损失函数">
+    <configuration name="各种损失函数" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYTORCH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/各种损失函数.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="dataset" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYTORCH" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -123,28 +149,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PYTORCH" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SDNE" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SDNE/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYTORCH" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -169,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.各种损失函数" />
         <item itemvalue="Python.draw_cora (1)" />
         <item itemvalue="Python.train" />
         <item itemvalue="Python.draw_cora" />
         <item itemvalue="Python.dataset" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -208,6 +212,9 @@
       <workItem from="1606998712920" duration="1488000" />
       <workItem from="1607045915842" duration="2243000" />
       <workItem from="1607126719159" duration="71000" />
+      <workItem from="1607167375532" duration="2824000" />
+      <workItem from="1607300806022" duration="280000" />
+      <workItem from="1607301714284" duration="2719000" />
     </task>
     <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
       <created>1606881125583</created>
@@ -341,64 +348,6 @@
     <MESSAGE value="添加GAT" />
     <option name="LAST_COMMIT_MESSAGE" value="添加GAT" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="0" y="23" width="1440" height="800" key="Github.ShareDialog" timestamp="1606880669975">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="0" y="23" width="1440" height="800" key="Github.ShareDialog/0.0.1440.900@0.0.1440.900" timestamp="1606880669975" />
-    <state x="470" y="95" key="Github.UntrackedFilesDialog" timestamp="1606880684767">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="470" y="95" key="Github.UntrackedFilesDialog/0.0.1440.900@0.0.1440.900" timestamp="1606880684767" />
-    <state width="1388" height="164" key="GridCell.Tab.0.bottom" timestamp="1606959179706">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1388" height="164" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606959179706" />
-    <state width="1388" height="164" key="GridCell.Tab.0.center" timestamp="1606959179705">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1388" height="164" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606959179705" />
-    <state width="1388" height="164" key="GridCell.Tab.0.left" timestamp="1606959179704">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1388" height="164" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606959179704" />
-    <state width="1388" height="164" key="GridCell.Tab.0.right" timestamp="1606959179705">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1388" height="164" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606959179705" />
-    <state width="1388" height="205" key="GridCell.Tab.1.bottom" timestamp="1604277728381">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1388" height="205" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1604277728381" />
-    <state width="1388" height="205" key="GridCell.Tab.1.center" timestamp="1604277728380">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1388" height="205" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1604277728380" />
-    <state width="1388" height="205" key="GridCell.Tab.1.left" timestamp="1604277728380">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1388" height="205" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1604277728380" />
-    <state width="1388" height="205" key="GridCell.Tab.1.right" timestamp="1604277728381">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1388" height="205" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1604277728381" />
-    <state x="220" y="127" key="Vcs.Push.Dialog.v2" timestamp="1606996401069">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="220" y="127" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606996401069" />
-    <state width="720" height="450" key="XDebugger.FullValuePopup" timestamp="1604219849794">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="720" height="450" key="XDebugger.FullValuePopup/0.0.1440.900@0.0.1440.900" timestamp="1604219849794" />
-    <state x="479" y="354" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606996356380">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="479" y="354" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1606996356380" />
-    <state x="455" y="325" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1606880951152">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="455" y="325" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1440.900@0.0.1440.900" timestamp="1606880951152" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -411,12 +360,12 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PYTORCH$draw_cora__1_.coverage" NAME="draw_cora (1) Coverage Results" MODIFIED="1606958422369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
     <SUITE FILE_PATH="coverage/PYTORCH$main.coverage" NAME="main Coverage Results" MODIFIED="1606880559595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE" />
-    <SUITE FILE_PATH="coverage/PYTORCH$train.coverage" NAME="train Coverage Results" MODIFIED="1606958408596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
+    <SUITE FILE_PATH="coverage/PYTORCH$draw_cora__1_.coverage" NAME="draw_cora (1) Coverage Results" MODIFIED="1606958422369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
     <SUITE FILE_PATH="coverage/PYTORCH$DeepFM.coverage" NAME="DeepFM Coverage Results" MODIFIED="1599903784216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PYTORCH$.coverage" NAME="生成对抗模型 Coverage Results" MODIFIED="1604280285849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PYTORCH$.coverage" NAME="各种损失函数 Coverage Results" MODIFIED="1607216022561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PYTORCH$draw_cora.coverage" NAME="draw_cora Coverage Results" MODIFIED="1606915414847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data/cora" />
+    <SUITE FILE_PATH="coverage/PYTORCH$train.coverage" NAME="train Coverage Results" MODIFIED="1606958408596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
     <SUITE FILE_PATH="coverage/PYTORCH$dataset.coverage" NAME="dataset Coverage Results" MODIFIED="1606883037451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data" />
   </component>
 </project>

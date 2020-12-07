@@ -2,7 +2,7 @@ import numpy as np
 import pylab
 from sklearn.manifold import TSNE
 from pathlib import Path
-
+import networkx as nx
 
 if __name__ == "__main__":
     emb_path=Path(__file__).parent/'cora'/'outVec.txt'
@@ -14,3 +14,5 @@ if __name__ == "__main__":
     pylab.scatter(Y[:, 0], Y[:, 1], 20, labels_data)
     pylab.savefig('embedding.png')
     pylab.show()
+
+    
