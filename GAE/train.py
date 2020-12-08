@@ -23,7 +23,8 @@ parser.add_argument('--dropout', type=float, default=0., help='Dropout rate (1 -
 parser.add_argument('--dataset-str', type=str, default='cora', help='type of dataset.')
 
 args = parser.parse_args()
-cuda=torch.cuda.is_available()
+cuda = torch.cuda.is_available()
+
 
 def gae_for(args):
     print("Using {} dataset".format(args.dataset_str))
@@ -52,9 +53,9 @@ def gae_for(args):
 
     hidden_emb = None
     if cuda:
-        model=model.cuda()
-        features=features.cuda()
-        adj_norm=adj_norm.cuda()
+        model = model.cuda()
+        features = features.cuda()
+        adj_norm = adj_norm.cuda()
     for epoch in range(args.epochs):
         t = time.time()
         model.train()

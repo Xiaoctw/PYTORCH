@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加util">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GAE/optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/optimizer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GAE/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/train.py" afterDir="false" />
     </list>
@@ -219,7 +218,7 @@
       <workItem from="1607167375532" duration="2824000" />
       <workItem from="1607300806022" duration="280000" />
       <workItem from="1607301714284" duration="2719000" />
-      <workItem from="1607387792962" duration="1731000" />
+      <workItem from="1607387792962" duration="2061000" />
     </task>
     <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
       <created>1606881125583</created>
@@ -340,7 +339,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607388660590</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="添加util">
+      <created>1607389552801</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1607389552801</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
