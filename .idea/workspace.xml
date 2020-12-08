@@ -19,22 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加GAT">
-      <change afterPath="$PROJECT_DIR$/GAE/data/ind.citeseer.allx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/data/ind.citeseer.graph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/data/ind.citeseer.test.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/data/ind.citeseer.tx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/data/ind.citeseer.x" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/data/ind.cora.allx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/data/ind.cora.graph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/data/ind.cora.test.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/data/ind.cora.tx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/data/ind.cora.x" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/layers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/optimizer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAE/train.py" afterDir="false" />
+    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加util">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAE/optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/optimizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAE/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +64,7 @@
       <recent name="$PROJECT_DIR$/GAE" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.各种损失函数">
+  <component name="RunManager" selected="Python.train (1)">
     <configuration name="各种损失函数" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYTORCH" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -91,28 +79,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/各种损失函数.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="dataset" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PYTORCH" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SDNE/data" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SDNE/data/dataset.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -165,6 +131,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="train (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYTORCH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GAE" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GAE/train.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYTORCH" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -189,11 +177,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.train (1)" />
         <item itemvalue="Python.各种损失函数" />
         <item itemvalue="Python.draw_cora (1)" />
         <item itemvalue="Python.train" />
         <item itemvalue="Python.draw_cora" />
-        <item itemvalue="Python.dataset" />
       </list>
     </recent_temporary>
   </component>
@@ -231,7 +219,7 @@
       <workItem from="1607167375532" duration="2824000" />
       <workItem from="1607300806022" duration="280000" />
       <workItem from="1607301714284" duration="2719000" />
-      <workItem from="1607387792962" duration="599000" />
+      <workItem from="1607387792962" duration="1731000" />
     </task>
     <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
       <created>1606881125583</created>
@@ -338,7 +326,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606996557880</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="添加GAN">
+      <created>1607388547925</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1607388547925</updated>
+    </task>
+    <task id="LOCAL-00017" summary="添加util">
+      <created>1607388660590</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1607388660590</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,7 +365,9 @@
     <MESSAGE value="更改TSNE" />
     <MESSAGE value="添加GCN" />
     <MESSAGE value="添加GAT" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加GAT" />
+    <MESSAGE value="添加GAN" />
+    <MESSAGE value="添加util" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加util" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -383,6 +387,7 @@
     <SUITE FILE_PATH="coverage/PYTORCH$.coverage" NAME="各种损失函数 Coverage Results" MODIFIED="1607216022561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PYTORCH$draw_cora.coverage" NAME="draw_cora Coverage Results" MODIFIED="1606915414847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data/cora" />
     <SUITE FILE_PATH="coverage/PYTORCH$train.coverage" NAME="train Coverage Results" MODIFIED="1606958408596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
+    <SUITE FILE_PATH="coverage/PYTORCH$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1607389542012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAE" />
     <SUITE FILE_PATH="coverage/PYTORCH$dataset.coverage" NAME="dataset Coverage Results" MODIFIED="1606883037451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data" />
   </component>
 </project>

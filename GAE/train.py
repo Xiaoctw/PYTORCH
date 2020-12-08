@@ -23,13 +23,12 @@ parser.add_argument('--dropout', type=float, default=0., help='Dropout rate (1 -
 parser.add_argument('--dataset-str', type=str, default='cora', help='type of dataset.')
 
 args = parser.parse_args()
-
+cuda=torch.cuda.is_available()
 
 def gae_for(args):
     print("Using {} dataset".format(args.dataset_str))
     adj, features = load_data(args.dataset_str)
     n_nodes, feat_dim = features.shape
-
     # Store original adjacency matrix (without diagonal entries) for later
     adj_orig = adj
     adj_orig = adj_orig - sp.dia_matrix((adj_orig.diagonal()[np.newaxis, :], [0]), shape=adj_orig.shape)
@@ -45,12 +44,17 @@ def gae_for(args):
     adj_label = torch.FloatTensor(adj_label.toarray())
 
     pos_weight = float(adj.shape[0] * adj.shape[0] - adj.sum()) / adj.sum()
+    # pos_weight=torch.from_numpy(pos_weight)
     norm = adj.shape[0] * adj.shape[0] / float((adj.shape[0] * adj.shape[0] - adj.sum()) * 2)
 
     model = GCNModelVAE(feat_dim, args.hidden1, args.hidden2, args.dropout)
     optimizer = optim.Adam(model.parameters(), lr=args.lr)
 
     hidden_emb = None
+    if cuda:
+        model=model.cuda()
+        features=features.cuda()
+        adj_norm=adj_norm.cuda()
     for epoch in range(args.epochs):
         t = time.time()
         model.train()
@@ -63,7 +67,7 @@ def gae_for(args):
         cur_loss = loss.item()
         optimizer.step()
 
-        hidden_emb = mu.data.numpy()
+        hidden_emb = mu.cpu().data.numpy()
         roc_curr, ap_curr = get_roc_score(hidden_emb, adj_orig, val_edges, val_edges_false)
 
         print("Epoch:", '%04d' % (epoch + 1), "train_loss=", "{:.5f}".format(cur_loss),
