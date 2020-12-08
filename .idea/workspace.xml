@@ -20,9 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加GAT">
-      <change afterPath="$PROJECT_DIR$/各种损失函数.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/data/ind.citeseer.allx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/data/ind.citeseer.graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/data/ind.citeseer.test.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/data/ind.citeseer.tx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/data/ind.citeseer.x" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/data/ind.cora.allx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/data/ind.cora.graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/data/ind.cora.test.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/data/ind.cora.tx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/data/ind.cora.x" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/layers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/optimizer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAE/train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GCN/draw_cora.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/draw_cora.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,14 +62,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/GAT" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/GAE" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/GAE" />
       <recent name="$PROJECT_DIR$/GAT" />
       <recent name="$PROJECT_DIR$/GAN" />
       <recent name="$PROJECT_DIR$/SDNE" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/GAE" />
     </key>
   </component>
   <component name="RunManager" selected="Python.各种损失函数">
@@ -215,6 +231,7 @@
       <workItem from="1607167375532" duration="2824000" />
       <workItem from="1607300806022" duration="280000" />
       <workItem from="1607301714284" duration="2719000" />
+      <workItem from="1607387792962" duration="599000" />
     </task>
     <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
       <created>1606881125583</created>
