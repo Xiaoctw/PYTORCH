@@ -63,7 +63,7 @@ def gae_for(args):
         recovered, mu, logvar = model(features, adj_norm)
         loss = loss_function(preds=recovered, labels=adj_label,
                              mu=mu, logvar=logvar, n_nodes=n_nodes,
-                             norm=norm, pos_weight=pos_weight)
+                             norm=norm)
         loss.backward()
         cur_loss = loss.item()
         optimizer.step()
