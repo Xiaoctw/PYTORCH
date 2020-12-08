@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.sparse as sp
 import torch
-
+from pathlib import Path
 '''
 先将所有由字符串表示的标签数组用set保存，set的重要特征就是元素没有重复，
 因此表示成set后可以直接得到所有标签的总数，随后为每个标签分配一个编号，创建一个单位矩阵，
@@ -87,13 +87,11 @@ def load_data(path="./cora/", dataset="cora"):
 
 
 def load_prepared_data(dataset='cora'):
-    # sp.save_npz('{}_adj.npz'.format(dataset), adj)
-    # sp.save_npz('{}_features.npz'.format(dataset), features)
-    # # sp.save_npz('{}_labels.npz'.format(dataset),save_labels)
-    # np.save('{}_labels.npy'.format(dataset), save_labels)
-    labels = np.load('{}_labels.npy'.format(dataset))
-    features = sp.load_npz('{}_features.npz'.format(dataset))
-    adj = sp.load_npz('{}_adj.npz'.format(dataset))
+    path = Path(__file__).parent / 'data'
+    print('Loading {} dataset...'.format(dataset))
+    labels = np.load(path/'{}_labels.npy'.format(dataset))
+    features = sp.load_npz(path/'{}_features.npz'.format(dataset))
+    adj = sp.load_npz(path/'{}_adj.npz'.format(dataset))
     features = normalize(features)
     adj = normalize(adj + sp.eye(adj.shape[0]))  # eye创建单位矩阵，第一个参数为行数，第二个为列数
     adj = normalize(adj)

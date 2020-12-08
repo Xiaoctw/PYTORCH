@@ -10,7 +10,7 @@ import torch
 from torch import optim
 from model import GCNModelVAE
 from optimizer import loss_function
-from utils import load_data, mask_test_edges, preprocess_graph, get_roc_score
+from utils import load_data, mask_test_edges, preprocess_graph, get_roc_score,load_prepared_data
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default='gcn_vae', help="models used")
@@ -36,7 +36,6 @@ def gae_for(args):
     adj_orig = adj_orig - sp.dia_matrix((adj_orig.diagonal()[np.newaxis, :], [0]), shape=adj_orig.shape)
     adj_orig.eliminate_zeros()
     print(adj.shape)
-    print(np.sum(adj))
     adj_train, train_edges, val_edges, val_edges_false, test_edges, test_edges_false = mask_test_edges(adj)
     adj = adj_train
     print('adj.shape:{}'.format(adj.shape))
@@ -87,7 +86,6 @@ def gae_for(args):
     print('Test ROC score: ' + str(roc_score))
     print('Test AP score: ' + str(ap_score))
     model=model.cpu()
-
 
 
 

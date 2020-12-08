@@ -4,6 +4,7 @@ import networkx as nx
 import numpy as np
 import scipy.sparse as sp
 import torch
+from pathlib import Path
 from sklearn.metrics import roc_auc_score, average_precision_score
 
 
@@ -44,6 +45,30 @@ def load_data(dataset):
     adj = nx.adjacency_matrix(nx.from_dict_of_lists(graph))
     return adj, features
 
+def normalize(mx):
+    """Row-normalize sparse matrix"""
+    rowsum = np.array(mx.sum(1))  # 对每一行求和
+    r_inv = np.power(rowsum, -1).flatten()  # 求倒数
+    r_inv[np.isinf(r_inv)] = 0.  # 如果某一行全为0，则r_inv算出来会等于无穷大，将这些行的r_inv置为0
+    r_mat_inv = sp.diags(r_inv)  # 构建对角元素为r_inv的对角矩阵
+    mx = r_mat_inv.dot(mx)
+    # 用对角矩阵与原始矩阵的点积起到标准化的作用，原始矩阵中每一行元素都会与对应的r_inv相乘，最终相当于除以了sum
+    return mx
+
+def load_prepared_data(dataset='cora'):
+    path = Path(__file__).parent / 'data'
+    print('Loading {} dataset...'.format(dataset))
+    labels = np.load(path/'{}_labels.npy'.format(dataset))
+    features = sp.load_npz(path/'{}_features.npz'.format(dataset))
+    adj = sp.load_npz(path/'{}_adj.npz'.format(dataset))
+    features = normalize(features)
+    # adj = normalize(adj + sp.eye(adj.shape[0]))  # eye创建单位矩阵，第一个参数为行数，第二个为列数
+    # adj = normalize(adj)
+    features = torch.FloatTensor(np.array(features.todense()))
+    labels = torch.LongTensor(labels)
+    #adj = sparse_mx_to_torch_sparse_tensor(adj)
+    adj = torch.FloatTensor(adj.todense())
+    return adj, features, labels
 
 def parse_index_file(filename):
     index = []
@@ -70,8 +95,6 @@ def mask_test_edges(adj):
     adj = adj - sp.dia_matrix((adj.diagonal()[np.newaxis, :], [0]), shape=adj.shape)
     adj.eliminate_zeros()
     # Check that diag is zero:
-    assert np.diag(adj.todense()).sum() == 0
-
     adj_triu = sp.triu(adj)
     adj_tuple = sparse_to_tuple(adj_triu)
     edges = adj_tuple[0]

@@ -21,13 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="转到CPU">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAE/layers.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/layers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAE/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAE/optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/optimizer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GAE/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GAE/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GCN/cora/labels.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/cora/labels.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GCN/cora/outVec.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/cora/outVec.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/cora/labels.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/cora/outVec.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAT/main.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/GCN/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +43,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="JupyterTrust" id="4ed03e88-c750-49c6-a338-4b0f77e14a61" />
   <component name="ProjectId" id="1gtoC6G0aCCD2SPBk2LqcuEUjID" />
@@ -55,16 +54,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/GAE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/GAE/data" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/GAE/data" />
       <recent name="$PROJECT_DIR$/GAE" />
       <recent name="$PROJECT_DIR$/GAT" />
       <recent name="$PROJECT_DIR$/GAN" />
       <recent name="$PROJECT_DIR$/SDNE" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/GAE" />
@@ -228,6 +228,7 @@
       <workItem from="1607387792962" duration="4410000" />
       <workItem from="1607399882610" duration="2319000" />
       <workItem from="1607416367695" duration="45000" />
+      <workItem from="1607423677114" duration="988000" />
     </task>
     <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
       <created>1606881125583</created>
@@ -436,7 +437,7 @@
     <SUITE FILE_PATH="coverage/PYTORCH$.coverage" NAME="各种损失函数 Coverage Results" MODIFIED="1607216022561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PYTORCH$draw_cora.coverage" NAME="draw_cora Coverage Results" MODIFIED="1606915414847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data/cora" />
     <SUITE FILE_PATH="coverage/PYTORCH$train.coverage" NAME="train Coverage Results" MODIFIED="1607401912335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
-    <SUITE FILE_PATH="coverage/PYTORCH$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1607402036511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAE" />
+    <SUITE FILE_PATH="coverage/PYTORCH$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1607424647848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAE" />
     <SUITE FILE_PATH="coverage/PYTORCH$dataset.coverage" NAME="dataset Coverage Results" MODIFIED="1606883037451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data" />
   </component>
 </project>
