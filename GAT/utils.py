@@ -1,6 +1,7 @@
 import numpy as np
 import scipy.sparse as sp
 import torch
+from pathlib import Path
 
 '''
 先将所有由字符串表示的标签数组用set保存，set的重要特征就是元素没有重复，
@@ -65,19 +66,35 @@ def load_data(dataset="cora"):
 
     # build symmetric adjacency matrix   论文里A^=(D~)^0.5 A~ (D~)^0.5这个公式
     adj = adj + adj.T.multiply(adj.T > adj) - adj.multiply(adj.T > adj)
+    sp.save_npz('{}_adj.npz'.format(dataset), adj)
+    sp.save_npz('{}_features.npz'.format(dataset), features)
     # 对于无向图，邻接矩阵是对称的。上一步得到的adj是按有向图构建的，转换成无向图的邻接矩阵需要扩充成对称矩阵
     features = normalize(features)
     adj = normalize(adj + sp.eye(adj.shape[0]))   # eye创建单位矩阵，第一个参数为行数，第二个为列数
     # 对应公式A~=A+IN
 
     # 分别构建训练集、验证集、测试集，并创建特征矩阵、标签向量和邻接矩阵的tensor，用来做模型的输入
-
-
     features = torch.FloatTensor(np.array(features.todense()))  # tensor为pytorch常用的数据结构
     labels = torch.LongTensor(np.where(labels)[1])
+    np.save('{}_labels.npy'.format(dataset), labels)
     adj = torch.FloatTensor(adj.todense()) # 邻接矩阵转为tensor处理
+    return adj, features, labels
 
-
+def load_prepared_data(dataset='cora'):
+    # sp.save_npz('{}_adj.npz'.format(dataset), adj)
+    # sp.save_npz('{}_features.npz'.format(dataset), features)
+    # # sp.save_npz('{}_labels.npz'.format(dataset),save_labels)
+    # np.save('{}_labels.npy'.format(dataset), save_labels)
+    path=Path(__file__).parent/'data'
+    labels = np.load(path/'{}_labels.npy'.format(dataset))
+    features = sp.load_npz(path/'{}_features.npz'.format(dataset))
+    adj = sp.load_npz(path/'{}_adj.npz'.format(dataset))
+    features = normalize(features)
+    adj = normalize(adj + sp.eye(adj.shape[0]))  # eye创建单位矩阵，第一个参数为行数，第二个为列数
+    adj = normalize(adj)
+    features = torch.FloatTensor(np.array(features.todense()))
+    labels = torch.LongTensor(labels)
+    adj = torch.FloatTensor(adj.todense())
     return adj, features, labels
 
 def normalize(mx):

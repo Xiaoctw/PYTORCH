@@ -29,6 +29,7 @@ def load_data(dataset):
     test_idx_range = np.sort(test_idx_reorder)
 
     if dataset == 'citeseer':
+        # 有部分噪声数据点
         # Fix citeseer dataset (there are some isolated nodes in the graph)
         # Find isolated nodes, add them as zero-vecs into the right position
         test_idx_range_full = range(
@@ -41,7 +42,6 @@ def load_data(dataset):
     features[test_idx_reorder, :] = features[test_idx_range, :]
     features = torch.FloatTensor(np.array(features.todense()))
     adj = nx.adjacency_matrix(nx.from_dict_of_lists(graph))
-
     return adj, features
 
 

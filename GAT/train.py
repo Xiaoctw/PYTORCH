@@ -13,7 +13,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
 from pathlib import Path
-from utils import load_data, accuracy
+from utils import load_data, accuracy,load_prepared_data
 from models import GAT
 
 # Training settings
@@ -30,7 +30,7 @@ parser.add_argument('--nb_heads', type=int, default=8, help='Number of head atte
 parser.add_argument('--dropout', type=float, default=0.6, help='Dropout rate (1 - keep probability).')
 parser.add_argument('--alpha', type=float, default=0.2, help='Alpha for the leaky_relu.')
 parser.add_argument('--patience', type=int, default=100, help='Patience')
-parser.add_argument('--dataset', type=str, default='citeseer', choices=['cora', 'citeseer'])
+parser.add_argument('--dataset', type=str, default='cora', choices=['cora', 'citeseer'])
 def train(epoch):
     t = time.time()
     model.train()
@@ -114,7 +114,7 @@ best = args.epochs + 1
 best_epoch = 0
 
 if __name__ == '__main__':
-    adj, features, labels = load_data(dataset)
+    adj, features, labels = load_prepared_data(dataset)
     model = GAT(nfeat=features.shape[1],
                 nhid=args.hidden,
                 nclass=int(labels.max()) + 1,

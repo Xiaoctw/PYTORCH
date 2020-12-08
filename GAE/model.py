@@ -8,6 +8,7 @@ from layers import GraphConvolution
 class GCNModelVAE(nn.Module):
     def __init__(self, input_feat_dim, hidden_dim1, hidden_dim2, dropout):
         super(GCNModelVAE, self).__init__()
+        # 设置三个图卷积层
         self.gc1 = GraphConvolution(input_feat_dim, hidden_dim1, dropout, act=F.relu)
         self.gc2 = GraphConvolution(hidden_dim1, hidden_dim2, dropout, act=lambda x: x)
         self.gc3 = GraphConvolution(hidden_dim1, hidden_dim2, dropout, act=lambda x: x)
@@ -21,14 +22,20 @@ class GCNModelVAE(nn.Module):
         if self.training:
             std = torch.exp(logvar)
             eps = torch.randn_like(std)
+            # 矩阵的点乘和加法
             return eps.mul(std).add_(mu)
         else:
             return mu
 
     def forward(self, x, adj):
+        # 这里的mu是被当做embedding的
         mu, logvar = self.encode(x, adj)
         z = self.reparameterize(mu, logvar)
         return self.dc(z), mu, logvar
+
+    def savevector(self,x,adj):
+        mu,logvar=self.encode(x,adj)
+        return mu
 
 
 class InnerProductDecoder(nn.Module):
@@ -40,6 +47,7 @@ class InnerProductDecoder(nn.Module):
         self.act = act
 
     def forward(self, z):
+        # 计算嵌入向量的内积
         z = F.dropout(z, self.dropout, training=self.training)
         adj = self.act(torch.mm(z, z.t()))
         return adj

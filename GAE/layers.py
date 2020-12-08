@@ -24,6 +24,7 @@ class GraphConvolution(Module):
     def forward(self, input, adj):
         input = F.dropout(input, self.dropout, self.training)
         support = torch.mm(input, self.weight)
+        #系数矩阵乘法
         output = torch.spmm(adj, support)
         output = self.act(output)
         return output

@@ -9,7 +9,7 @@ import torch
 import torch.nn.functional as F
 import torch.optim as optim
 from pathlib import Path
-from utils import load_data, accuracy
+from utils import load_data, accuracy,load_prepared_data
 from model import GCN
 
 # Training settings
@@ -38,10 +38,21 @@ np.random.seed(args.seed)
 torch.manual_seed(args.seed)  # 为CPU设置种子用于生成随机数，以使得结果是确定的
 if args.cuda:
     torch.cuda.manual_seed(args.seed)
-
+# adj, features, labels,idx_train, idx_val, idx_test=load_data()
+# print(adj.shape)
+# print(features.shape)
+# print(labels.shape)
 # Load data
-adj, features, labels, idx_train, idx_val, idx_test = load_data()
-
+adj, features, labels = load_prepared_data()
+print(adj.shape)
+print(features.shape)
+print(labels.shape)
+idx_train = range(140)
+idx_val = range(200, 500)
+idx_test = range(500, 1500)
+idx_train = torch.LongTensor(idx_train)
+idx_val = torch.LongTensor(idx_val)
+idx_test = torch.LongTensor(idx_test)
 # Model and optimizer
 model = GCN(nfeat=features.shape[1],
             nhid=args.hidden,

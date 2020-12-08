@@ -28,16 +28,22 @@ cuda = torch.cuda.is_available()
 
 def gae_for(args):
     print("Using {} dataset".format(args.dataset_str))
+    #得到原始邻接矩阵和特征
     adj, features = load_data(args.dataset_str)
     n_nodes, feat_dim = features.shape
     # Store original adjacency matrix (without diagonal entries) for later
     adj_orig = adj
     adj_orig = adj_orig - sp.dia_matrix((adj_orig.diagonal()[np.newaxis, :], [0]), shape=adj_orig.shape)
     adj_orig.eliminate_zeros()
-
+    print(adj.shape)
+    print(np.sum(adj))
     adj_train, train_edges, val_edges, val_edges_false, test_edges, test_edges_false = mask_test_edges(adj)
     adj = adj_train
-
+    print('adj.shape:{}'.format(adj.shape))
+    print("np.sum(adj):{}".format(np.sum(adj)))
+    print("len(train_edges):{}".format(len(train_edges)))
+    print("len(test_edges):{}".format(len(test_edges)))
+    print("len(val_edges):{}".format(len(val_edges)))
     # Some preprocessing
     adj_norm = preprocess_graph(adj)
     adj_label = adj_train + sp.eye(adj_train.shape[0])
@@ -59,6 +65,7 @@ def gae_for(args):
         t = time.time()
         model.train()
         optimizer.zero_grad()
+        #每次将整个图放入到模型中训练
         recovered, mu, logvar = model(features, adj_norm)
         loss = loss_function(preds=recovered, labels=adj_label,
                              mu=mu, logvar=logvar, n_nodes=n_nodes,
@@ -76,10 +83,12 @@ def gae_for(args):
               )
 
     print("Optimization Finished!")
-
     roc_score, ap_score = get_roc_score(hidden_emb, adj_orig, test_edges, test_edges_false)
     print('Test ROC score: ' + str(roc_score))
     print('Test AP score: ' + str(ap_score))
+    model=model.cpu()
+
+
 
 
 if __name__ == '__main__':
