@@ -49,13 +49,12 @@ def gae_for(args):
     norm = adj.shape[0] * adj.shape[0] / float((adj.shape[0] * adj.shape[0] - adj.sum()) * 2)
 
     model = GCNModelVAE(feat_dim, args.hidden1, args.hidden2, args.dropout)
-    optimizer = optim.Adam(model.parameters(), lr=args.lr)
-
-    hidden_emb = None
     if cuda:
         model = model.cuda()
         features = features.cuda()
         adj_norm = adj_norm.cuda()
+    optimizer = optim.Adam(model.parameters(), lr=args.lr)
+    hidden_emb = None
     for epoch in range(args.epochs):
         t = time.time()
         model.train()

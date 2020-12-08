@@ -19,8 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加util">
-      <change beforePath="$PROJECT_DIR$/GAE/optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/optimizer.py" afterDir="false" />
+    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="转到CPU">
       <change beforePath="$PROJECT_DIR$/GAE/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -218,7 +217,7 @@
       <workItem from="1607167375532" duration="2824000" />
       <workItem from="1607300806022" duration="280000" />
       <workItem from="1607301714284" duration="2719000" />
-      <workItem from="1607387792962" duration="2061000" />
+      <workItem from="1607387792962" duration="2409000" />
     </task>
     <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
       <created>1606881125583</created>
@@ -346,7 +345,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607389552801</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="转到CPU">
+      <created>1607389928219</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1607389928219</updated>
+    </task>
+    <task id="LOCAL-00020" summary="转到CPU">
+      <created>1607390047294</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1607390047294</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,7 +386,8 @@
     <MESSAGE value="添加GAT" />
     <MESSAGE value="添加GAN" />
     <MESSAGE value="添加util" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加util" />
+    <MESSAGE value="转到CPU" />
+    <option name="LAST_COMMIT_MESSAGE" value="转到CPU" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -393,7 +407,7 @@
     <SUITE FILE_PATH="coverage/PYTORCH$.coverage" NAME="各种损失函数 Coverage Results" MODIFIED="1607216022561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PYTORCH$draw_cora.coverage" NAME="draw_cora Coverage Results" MODIFIED="1606915414847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data/cora" />
     <SUITE FILE_PATH="coverage/PYTORCH$train.coverage" NAME="train Coverage Results" MODIFIED="1606958408596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
-    <SUITE FILE_PATH="coverage/PYTORCH$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1607389542012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAE" />
+    <SUITE FILE_PATH="coverage/PYTORCH$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1607390205932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAE" />
     <SUITE FILE_PATH="coverage/PYTORCH$dataset.coverage" NAME="dataset Coverage Results" MODIFIED="1606883037451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data" />
   </component>
 </project>
