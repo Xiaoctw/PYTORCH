@@ -20,13 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="转到CPU">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAT/.idea/GAT.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GCN/.idea/GCN.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAE/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAE/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAE/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/cora/labels.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/cora/outVec.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAT/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GCN/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GCN/layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/layer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GCN/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/GAE/data" />
   </component>
   <component name="RecentsManager">
@@ -228,7 +234,8 @@
       <workItem from="1607387792962" duration="4410000" />
       <workItem from="1607399882610" duration="2319000" />
       <workItem from="1607416367695" duration="45000" />
-      <workItem from="1607423677114" duration="988000" />
+      <workItem from="1607423677114" duration="1210000" />
+      <workItem from="1607427916534" duration="627000" />
     </task>
     <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
       <created>1606881125583</created>
@@ -384,7 +391,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607390345213</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="转到CPU">
+      <created>1607424829143</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1607424829143</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

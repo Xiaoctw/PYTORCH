@@ -42,7 +42,7 @@ class GraphConvolution(Module):
     def forward(self, input, adj):
         support = torch.mm(input, self.weight)
         # torch.mm(a, b)是矩阵a和b矩阵相乘，torch.mul(a, b)是矩阵a和b对应位相乘，a和b的维度必须相等
-        output=torch.sparse.mm(adj, support)
+        output=torch.mm(adj, support)
         #output = torch.spmm(adj, support)
         if self.bias is not None:
             return output + self.bias

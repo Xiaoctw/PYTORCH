@@ -9,7 +9,7 @@ import torch
 import torch.nn.functional as F
 import torch.optim as optim
 from pathlib import Path
-from utils import load_data, accuracy,load_prepared_data
+from utils import load_data, accuracy, load_prepared_data
 from model import GCN
 
 # Training settings
@@ -29,6 +29,7 @@ parser.add_argument('--hidden', type=int, default=16,
                     help='Number of hidden units.')
 parser.add_argument('--dropout', type=float, default=0.5,
                     help='Dropout rate (1 - keep probability).')
+parser.add_argument('--dataset',type=str,default='cora',choices=['cora','citeseer'])
 
 # 如果程序不禁止使用gpu且当前主机的gpu可用，arg.cuda就为True
 args = parser.parse_args()
@@ -43,7 +44,7 @@ if args.cuda:
 # print(features.shape)
 # print(labels.shape)
 # Load data
-adj, features, labels = load_prepared_data()
+adj, features, labels = load_prepared_data(args.dataset)
 print(adj.shape)
 print(features.shape)
 print(labels.shape)
@@ -118,18 +119,20 @@ def test():
           "accuracy= {:.4f}".format(acc_test.item()))
 
 
-def save_embeddings():
+def save_embeddings(dataset='cora'):
     model.eval()
     output = model.savector(features, adj)
     outVec = output.cpu().detach().numpy()
-    path=Path(__file__).parent/'cora'/'outVec.txt'
-    np.savetxt(path,outVec)
-    path=Path(__file__).parent/'cora'/'labels.txt'
-    outLabel=labels.cpu().detach().numpy()
-    np.savetxt(path,outLabel)
+    path = Path(__file__).parent / ('{}_outVec.txt'.format(dataset))
+    np.savetxt(path, outVec)
+    path = Path(__file__).parent / ('{}_labels.txt'.format(dataset))
+    outLabel = labels.cpu().detach().numpy()
+    np.savetxt(path, outLabel)
+
 
 if __name__ == '__main__':
     # Train model  逐个epoch进行train，最后test
+    # 观察是否修改
     t_total = time.time()
     for epoch in range(args.epochs):
         train(epoch)
@@ -139,6 +142,4 @@ if __name__ == '__main__':
     test()
     print('End of the test')
     print('Retain embedding results.')
-    save_embeddings()
-
-
+    save_embeddings(args.dataset)

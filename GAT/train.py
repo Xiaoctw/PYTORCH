@@ -13,7 +13,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
 from pathlib import Path
-from utils import load_data, accuracy,load_prepared_data
+from utils import load_data, accuracy, load_prepared_data
 from models import GAT
 
 # Training settings
@@ -31,6 +31,8 @@ parser.add_argument('--dropout', type=float, default=0.6, help='Dropout rate (1 
 parser.add_argument('--alpha', type=float, default=0.2, help='Alpha for the leaky_relu.')
 parser.add_argument('--patience', type=int, default=100, help='Patience')
 parser.add_argument('--dataset', type=str, default='cora', choices=['cora', 'citeseer'])
+
+
 def train(epoch):
     t = time.time()
     model.train()
@@ -47,16 +49,16 @@ def train(epoch):
         output = model(features, adj)
     loss_val = F.nll_loss(output[idx_val], labels[idx_val])
     acc_val = accuracy(output[idx_val], labels[idx_val])
-    loss_test= F.nll_loss(output[idx_test], labels[idx_test])
-    acc_test = accuracy(output[idx_test], labels[idx_test])
+    # loss_test= F.nll_loss(output[idx_test], labels[idx_test])
+    # acc_test = accuracy(output[idx_test], labels[idx_test])
     print('Epoch: {:04d}'.format(epoch + 1),
           'loss_train: {:.4f}'.format(loss_train.data.item()),
           'acc_train: {:.4f}'.format(acc_train.data.item()),
           'loss_val: {:.4f}'.format(loss_val.data.item()),
           'acc_val: {:.4f}'.format(acc_val.data.item()),
-          'loss_test: {:.4f}'.format(loss_test.data.item()),
-          'acc_test: {:.4f}'.format(acc_test.data.item()),
-          'time: {:.4f}s'.format(time.time() - t),)
+          # 'loss_test: {:.4f}'.format(loss_test.data.item()),
+          # 'acc_test: {:.4f}'.format(acc_test.data.item()),
+          'time: {:.4f}s'.format(time.time() - t), )
     return loss_val.data.item()
 
 
@@ -70,15 +72,17 @@ def compute_test():
           "accuracy= {:.4f}".format(acc_test.item()))
 
 
-def save_embeddings():
+def save_embeddings(dataset):
     model.eval()
     output = model.savector(features, adj)
     outVec = output.cpu().detach().numpy()
-    path = Path(__file__).parent / dataset / 'outVec.txt'
+    path = Path(__file__).parent / (
+        '{}_outVec.txt'.format(dataset))
     np.savetxt(path, outVec)
-    path = Path(__file__).parent / dataset / 'labels.txt'
+    path = Path(__file__).parent / ('{}_labels.txt'.format(dataset))
     outLabel = labels.cpu().detach().numpy()
     np.savetxt(path, outLabel)
+
 
 args = parser.parse_args()
 args.cuda = not args.no_cuda and torch.cuda.is_available()
@@ -89,19 +93,19 @@ torch.manual_seed(args.seed)
 if args.cuda:
     torch.cuda.manual_seed(args.seed)
 # Load data
-if dataset=='cora':
+if dataset == 'cora':
     idx_train = range(140)
     idx_val = range(200, 500)
     idx_test = range(500, 1500)
     idx_train = torch.LongTensor(idx_train)
     idx_val = torch.LongTensor(idx_val)
     idx_test = torch.LongTensor(idx_test)
-elif dataset=='citeseer':
-    idxes=np.arange(1600)
+elif dataset == 'citeseer':
+    idxes = np.arange(1600)
     np.random.shuffle(idxes)
-    idx_train = idxes[:120]
+    idx_train = idxes[:300]
     idx_val = idxes[500:600]
-    idx_test =idxes[600:1600]
+    idx_test = idxes[600:1600]
     idx_train = torch.LongTensor(idx_train)
     idx_val = torch.LongTensor(idx_val)
     idx_test = torch.LongTensor(idx_test)
@@ -146,4 +150,4 @@ if __name__ == '__main__':
     print("Optimization Finished!")
     print("Total time elapsed: {:.4f}s".format(time.time() - t_total))
     compute_test()
-    save_embeddings()
+    save_embeddings(dataset)

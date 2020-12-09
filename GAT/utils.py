@@ -85,6 +85,7 @@ def load_prepared_data(dataset='cora'):
     # sp.save_npz('{}_features.npz'.format(dataset), features)
     # # sp.save_npz('{}_labels.npz'.format(dataset),save_labels)
     # np.save('{}_labels.npy'.format(dataset), save_labels)
+    print('Loading {} dataset'.format(dataset))
     path=Path(__file__).parent/'data'
     labels = np.load(path/'{}_labels.npy'.format(dataset))
     features = sp.load_npz(path/'{}_features.npz'.format(dataset))
