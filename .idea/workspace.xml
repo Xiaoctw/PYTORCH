@@ -20,13 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="转到CPU">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAT/.idea/GAT.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GCN/.idea/GCN.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_12_3__7_52___Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GCN/layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/layer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GCN/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GCN/cora_outVec.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/cora_outVec.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDNE/G.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDNE/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/SDNE/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/各种损失函数.py" beforeDir="false" afterPath="$PROJECT_DIR$/各种损失函数.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +75,7 @@
       <recent name="$PROJECT_DIR$/GAE" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.train (1)">
+  <component name="RunManager" selected="Python.各种损失函数">
     <configuration name="各种损失函数" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYTORCH" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -189,9 +188,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.各种损失函数" />
         <item itemvalue="Python.train (1)" />
         <item itemvalue="Python.train" />
-        <item itemvalue="Python.各种损失函数" />
         <item itemvalue="Python.draw_cora (1)" />
         <item itemvalue="Python.draw_cora" />
       </list>
@@ -236,6 +235,10 @@
       <workItem from="1607416367695" duration="45000" />
       <workItem from="1607423677114" duration="1210000" />
       <workItem from="1607427916534" duration="627000" />
+      <workItem from="1607649274088" duration="1346000" />
+      <workItem from="1607764510545" duration="639000" />
+      <workItem from="1607820739744" duration="1886000" />
+      <workItem from="1607919109925" duration="1447000" />
     </task>
     <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
       <created>1606881125583</created>
@@ -448,7 +451,7 @@
     <SUITE FILE_PATH="coverage/PYTORCH$main.coverage" NAME="main Coverage Results" MODIFIED="1606880559595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE" />
     <SUITE FILE_PATH="coverage/PYTORCH$draw_cora__1_.coverage" NAME="draw_cora (1) Coverage Results" MODIFIED="1606958422369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
     <SUITE FILE_PATH="coverage/PYTORCH$DeepFM.coverage" NAME="DeepFM Coverage Results" MODIFIED="1599903784216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PYTORCH$.coverage" NAME="各种损失函数 Coverage Results" MODIFIED="1607216022561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PYTORCH$.coverage" NAME="各种损失函数 Coverage Results" MODIFIED="1607824520966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PYTORCH$draw_cora.coverage" NAME="draw_cora Coverage Results" MODIFIED="1606915414847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data/cora" />
     <SUITE FILE_PATH="coverage/PYTORCH$train.coverage" NAME="train Coverage Results" MODIFIED="1607401912335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
     <SUITE FILE_PATH="coverage/PYTORCH$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1607424647848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAE" />
