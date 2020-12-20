@@ -5,7 +5,7 @@ from pathlib import Path
 import networkx as nx
 
 if __name__ == "__main__":
-    dataset='cora'
+    dataset='citeseer'
     emb_path=Path(__file__).parent/('{}_outVec.txt'.format(dataset))
     label_path=Path(__file__).parent/('{}_labels.txt'.format(dataset))
     X = np.loadtxt(emb_path)
@@ -15,5 +15,3 @@ if __name__ == "__main__":
     pylab.scatter(Y[:, 0], Y[:, 1], 20, labels_data)
     pylab.savefig('{}_embedding.png'.format(dataset))
     pylab.show()
-
-    

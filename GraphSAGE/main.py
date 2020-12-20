@@ -7,7 +7,7 @@ from net import GraphSage
 from utils import load_prepared_data
 from sampling import multihop_sampling
 from collections import namedtuple
-
+from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--no-cuda', action='store_true', default=False,
@@ -15,7 +15,7 @@ parser.add_argument('--no-cuda', action='store_true', default=False,
 parser.add_argument('--fastmode', action='store_true', default=False,
                     help='Validate during training pass.')
 parser.add_argument('--seed', type=int, default=42, help='Random seed.')
-parser.add_argument('--epochs', type=int, default=20,
+parser.add_argument('--epochs', type=int, default=40,
                     help='Number of epochs to train.')
 parser.add_argument('--lr', type=float, default=0.01,
                     help='Initial learning rate.')
@@ -25,14 +25,12 @@ parser.add_argument('--hidden', type=int, default=16,
                     help='Number of hidden units.')
 parser.add_argument('--dropout', type=float, default=0.5,
                     help='Dropout rate (1 - keep probability).')
-parser.add_argument('--dataset',type=str,default='cora',choices=['cora','citeseer'])
+parser.add_argument('--dataset', type=str, default='citeseer', choices=['cora', 'citeseer'])
 
-
-args=parser.parse_args()
+args = parser.parse_args()
 # print(adj.shape)
 # print(features.shape)
 # print(labels.shape)
-
 
 
 BTACH_SIZE = 16  # 批处理大小
@@ -40,25 +38,27 @@ epochs = args.epochs
 NUM_BATCH_PER_EPOCH = 20  # 每个epoch循环的批次数
 learning_rate = args.lr  # 学习率
 device = "cuda" if torch.cuda.is_available() else "cpu"
-dataset = 'citeseer'
-idx_train = range(140)
+dataset = args.dataset
+idx_train = range(300)
 idx_val = range(200, 500)
 idx_test = range(500, 1500)
 # idx_train = torch.LongTensor(idx_train)
 # idx_val = torch.LongTensor(idx_val)
 # idx_test = torch.LongTensor(idx_test)
 adj, features, labels, neighbor_table = load_prepared_data(dataset)
-input_dim=features.shape[1]# 输入维度
+input_dim = features.shape[1]  # 输入维度
 hidden_dim = [128, ]  # 隐藏单元节点数
-NUM_NEIGHBORS_LIST = [10, 10]  # 每阶采样邻居的节点数
+#避免过多占用内存
+num_neighbors_list = [5,5]  # 每阶采样邻居的节点数
 # Note: 采样的邻居阶数需要与GCN的层数保持一致
-hidden_dim.append(max(labels)+1)
-assert len(hidden_dim) == len(NUM_NEIGHBORS_LIST)
+hidden_dim.append(max(labels) + 1)
+assert len(hidden_dim) == len(num_neighbors_list)
 model = GraphSage(input_dim=input_dim, hidden_dim=hidden_dim,
-                  num_neighbors_list=NUM_NEIGHBORS_LIST).to(device)
+                  num_neighbors_list=num_neighbors_list).to(device)
 criterion = nn.CrossEntropyLoss().to(device)
 optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=5e-4)
-
+features = features.to(device)
+labels = labels.to(device)
 
 
 def train_batch():
@@ -73,7 +73,7 @@ def train_batch():
             # 在这里全部转化为tensor进行处理
             batch_src_index = torch.from_numpy(np.random.choice(idx_train, size=(BTACH_SIZE,))).long()
             batch_src_label = labels[batch_src_index].to(device)
-            batch_sampling_result = multihop_sampling(batch_src_index, NUM_NEIGHBORS_LIST, neighbor_table)
+            batch_sampling_result = multihop_sampling(batch_src_index, num_neighbors_list, neighbor_table)
             batch_sampling_x = [features[idx].to(device) for idx in batch_sampling_result]
             batch_train_logits = model(batch_sampling_x)
             batch_loss = criterion(batch_train_logits, batch_src_label)
@@ -85,18 +85,49 @@ def train_batch():
         test()
 
 
-
-
 def test():
     model.eval()
     with torch.no_grad():
-        test_sampling_result = multihop_sampling(torch.LongTensor(idx_test), NUM_NEIGHBORS_LIST, neighbor_table)
-        test_x = [features[idx].to(device) for idx in test_sampling_result]
+        test_sampling_result = multihop_sampling(torch.LongTensor(idx_test), num_neighbors_list, neighbor_table)
+        test_x = []
+        for idx in test_sampling_result:
+            test_x.append(features[idx])
+        #  test_x = [features[idx] for idx in test_sampling_result]
         test_logits = model(test_x)
-        test_label = labels[idx_test].long().to(device)
+        test_label = labels[idx_test].long()
         predict_y = test_logits.max(1)[1]
         accuarcy = torch.eq(predict_y, test_label).float().mean().item()
     return accuarcy
+
+
+def save_embeddings():
+    model.eval()
+    with torch.no_grad():
+        # src_index = torch.LongTensor(range(features.shape[0]))
+        # test_sampling_result = multihop_sampling(src_index, NUM_NEIGHBORS_LIST, neighbor_table)
+        # x = []
+        # for idx in test_sampling_result:
+        #     x.append(features[idx])
+        # # test_x = [features[idx] for idx in test_sampling_result]
+        #     print('x:{}'.format(torch.cuda.memory_allocated()))
+        # output = model(x)
+        src_index = torch.LongTensor(range(features.shape[0]))
+        sampling_result = multihop_sampling(src_index, num_neighbors_list, neighbor_table)
+        #print('{}:sampling_x前:{}'.format(epoch, torch.cuda.memory_allocated()))
+        sampling_x = []
+        for idx in sampling_result:
+            # 这种方法会共享内存
+            sampling_x.append(features[idx])
+       #     print('{}:sampling_x:{}'.format(epoch, torch.cuda.memory_allocated()))
+        # sampling_x = [features[idx] for idx in sampling_result]
+      #  print('{}:sampling_x后:{}'.format(epoch, torch.cuda.memory_allocated()))
+        train_logits = model(sampling_x)
+    outVec = train_logits.cpu().detach().numpy()
+    path = Path(__file__).parent / ('{}_outVec.txt'.format(dataset))
+    np.savetxt(path, outVec)
+    path = Path(__file__).parent / ('{}_labels.txt'.format(dataset))
+    outLabel = labels.cpu().detach().numpy()
+    np.savetxt(path, outLabel)
 
 
 if __name__ == '__main__':
@@ -104,21 +135,26 @@ if __name__ == '__main__':
     idx_train = torch.LongTensor(idx_train)
     idx_val = torch.LongTensor(idx_val)
     idx_test = torch.LongTensor(idx_test)
-    features = features.to(device)
-    labels = labels.to(device)
     for epoch in range(epochs):
         model.train()
         src_index = torch.LongTensor(range(features.shape[0]))
-        sampling_result = multihop_sampling(src_index, NUM_NEIGHBORS_LIST, neighbor_table)
-        sampling_x = [features[idx].to(device) for idx in sampling_result]
+        sampling_result = multihop_sampling(src_index, num_neighbors_list, neighbor_table)
+        #print('{}:sampling_x前:{}'.format(epoch, torch.cuda.memory_allocated()))
+        sampling_x = []
+        for idx in sampling_result:
+            # 这种方法会共享内存
+            sampling_x.append(features[idx])
+            #print('{}:sampling_x:{}'.format(epoch, torch.cuda.memory_allocated()))
+            # print('sampling_x:{}'.format(epoch, torch.cuda.memory_allocated()))
+        # sampling_x = [features[idx] for idx in sampling_result]
+        #print('{}:sampling_x后:{}'.format(epoch, torch.cuda.memory_allocated()))
         train_logits = model(sampling_x)
+        sampling_x = []  # 释放内存
         loss = criterion(train_logits[idx_train], labels[idx_train])
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-        accuracy=test()
+        accuracy = test()
         print("Epoch {:03d} Loss: {:.4f}, Accuracy: {:.4f}".format(epoch, loss.item(),
                                                                    accuracy))
-
-
-
+    save_embeddings()

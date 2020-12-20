@@ -92,6 +92,7 @@ def load_prepared_data(dataset='cora'):
     labels = np.load(path/'{}_labels.npy'.format(dataset))
     features = sp.load_npz(path/'{}_features.npz'.format(dataset))
     adj = sp.load_npz(path/'{}_adj.npz'.format(dataset))
+    #归一化特征
     features = normalize(features)
     adj = normalize(adj + sp.eye(adj.shape[0]))  # eye创建单位矩阵，第一个参数为行数，第二个为列数
     adj = normalize(adj)

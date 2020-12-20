@@ -19,23 +19,25 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="SDNE添加整体">
-      <change afterPath="$PROJECT_DIR$/DNGR/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GraphSAGE/data/citeseer_adj.npz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GraphSAGE/data/citeseer_features.npz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GraphSAGE/data/citeseer_labels.npy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GraphSAGE/data/cora_adj.npz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GraphSAGE/data/cora_features.npz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GraphSAGE/data/cora_labels.npy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GraphSAGE/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GraphSAGE/net.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GraphSAGE/sampling.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GraphSAGE/utils.py" afterDir="false" />
+    <list default="true" id="ca1c7a8b-0b9d-422a-8695-c7c2ce4ae13a" name="Default Changelist" comment="添加整体训练GraphSAGE">
+      <change afterPath="$PROJECT_DIR$/DNGR/data/citeseer_adj.npz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DNGR/data/citeseer_features.npz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DNGR/data/citeseer_labels.npy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DNGR/data/cora_adj.npz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DNGR/data/cora_features.npz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DNGR/data/cora_labels.npy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DNGR/dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DNGR/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DNGR/train.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GraphSAGE/draw_cora.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testcuda.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAT/.idea/GAT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/GAT/.idea/GAT.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDNE/embedding.png" beforeDir="false" afterPath="$PROJECT_DIR$/SDNE/embedding.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DNGR/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/DNGR/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GCN/draw_cora.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/draw_cora.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GCN/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GraphSAGE/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/GraphSAGE/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GraphSAGE/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/GraphSAGE/net.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,22 +74,22 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/GraphSAGE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/DNGR" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/DNGR" />
       <recent name="$PROJECT_DIR$/GraphSAGE" />
       <recent name="$PROJECT_DIR$/GAE/data" />
       <recent name="$PROJECT_DIR$/GAE" />
       <recent name="$PROJECT_DIR$/GAT" />
-      <recent name="$PROJECT_DIR$/GAN" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/GAE" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
-    <configuration name="各种损失函数" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.main (1)">
+    <configuration name="draw_cora (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYTORCH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -95,12 +97,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GraphSAGE" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/各种损失函数.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GraphSAGE/draw_cora.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -117,12 +119,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SDNE/data/cora" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GCN" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SDNE/data/cora/draw_cora.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GCN/draw_cora.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -131,7 +133,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYTORCH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -139,12 +141,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GraphSAGE" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DNGR" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GraphSAGE/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DNGR/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -153,7 +155,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="train (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYTORCH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -161,12 +163,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GAE" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DNGR" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GAE/train.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DNGR/model.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -175,7 +177,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="utils" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="testcuda" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYTORCH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -183,12 +185,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GraphSAGE" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GraphSAGE/utils.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testcuda.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -199,11 +201,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python.utils" />
+        <item itemvalue="Python.main (1)" />
+        <item itemvalue="Python.model" />
         <item itemvalue="Python.draw_cora" />
-        <item itemvalue="Python.各种损失函数" />
-        <item itemvalue="Python.train (1)" />
+        <item itemvalue="Python.draw_cora (1)" />
+        <item itemvalue="Python.testcuda" />
       </list>
     </recent_temporary>
   </component>
@@ -253,7 +255,12 @@
       <workItem from="1607949980822" duration="519000" />
       <workItem from="1607994750390" duration="702000" />
       <workItem from="1608027723661" duration="9864000" />
-      <workItem from="1608107436994" duration="1621000" />
+      <workItem from="1608107436994" duration="8574000" />
+      <workItem from="1608187183878" duration="1982000" />
+      <workItem from="1608199921799" duration="1304000" />
+      <workItem from="1608336396501" duration="8736000" />
+      <workItem from="1608350435680" duration="224000" />
+      <workItem from="1608358527728" duration="3542000" />
     </task>
     <task id="LOCAL-00001" summary="添加了cuda设置，导入到cuda中。">
       <created>1606881125583</created>
@@ -423,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607920570872</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="添加整体训练GraphSAGE">
+      <created>1608110488559</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1608110488559</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -452,16 +466,12 @@
     <MESSAGE value="添加util" />
     <MESSAGE value="转到CPU" />
     <MESSAGE value="SDNE添加整体" />
-    <option name="LAST_COMMIT_MESSAGE" value="SDNE添加整体" />
+    <MESSAGE value="添加整体训练GraphSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加整体训练GraphSAGE" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/file1.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/GCN/utils.py</url>
           <line>64</line>
@@ -471,13 +481,16 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PYTORCH$main.coverage" NAME="main Coverage Results" MODIFIED="1608110293611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GraphSAGE" />
-    <SUITE FILE_PATH="coverage/PYTORCH$draw_cora__1_.coverage" NAME="draw_cora (1) Coverage Results" MODIFIED="1606958422369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
+    <SUITE FILE_PATH="coverage/PYTORCH$main.coverage" NAME="main Coverage Results" MODIFIED="1608117577064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GraphSAGE" />
+    <SUITE FILE_PATH="coverage/PYTORCH$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1608360908943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DNGR" />
+    <SUITE FILE_PATH="coverage/PYTORCH$draw_cora__1_.coverage" NAME="draw_cora (1) Coverage Results" MODIFIED="1608120778951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GraphSAGE" />
     <SUITE FILE_PATH="coverage/PYTORCH$DeepFM.coverage" NAME="DeepFM Coverage Results" MODIFIED="1599903784216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PYTORCH$.coverage" NAME="各种损失函数 Coverage Results" MODIFIED="1607824520966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PYTORCH$utils.coverage" NAME="utils Coverage Results" MODIFIED="1608032873649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GraphSAGE" />
-    <SUITE FILE_PATH="coverage/PYTORCH$draw_cora.coverage" NAME="draw_cora Coverage Results" MODIFIED="1607920779467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data/cora" />
-    <SUITE FILE_PATH="coverage/PYTORCH$train.coverage" NAME="train Coverage Results" MODIFIED="1607401912335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
+    <SUITE FILE_PATH="coverage/PYTORCH$model.coverage" NAME="model Coverage Results" MODIFIED="1608342200913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DNGR" />
+    <SUITE FILE_PATH="coverage/PYTORCH$testcuda.coverage" NAME="testcuda Coverage Results" MODIFIED="1608117781286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PYTORCH$draw_cora.coverage" NAME="draw_cora Coverage Results" MODIFIED="1608190002394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
+    <SUITE FILE_PATH="coverage/PYTORCH$train.coverage" NAME="train Coverage Results" MODIFIED="1608116518871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GCN" />
     <SUITE FILE_PATH="coverage/PYTORCH$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1607424647848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAE" />
     <SUITE FILE_PATH="coverage/PYTORCH$dataset.coverage" NAME="dataset Coverage Results" MODIFIED="1606883037451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SDNE/data" />
   </component>

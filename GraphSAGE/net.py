@@ -136,6 +136,12 @@ class GraphSage(nn.Module):
             hidden = next_hidden
         return hidden[0]
 
+    def saveVec(self,X):
+        self.eval()
+        for l in range(self.num_layers):
+            X=self.gcn[l](X,)
+        return X
+
     def extra_repr(self):
         return 'in_features={}, num_neighbors_list={}'.format(
             self.input_dim, self.num_neighbors_list
