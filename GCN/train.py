@@ -45,9 +45,9 @@ if args.cuda:
 # print(labels.shape)
 # Load data
 adj, features, labels = load_prepared_data(args.dataset)
-print(adj.shape)
-print(features.shape)
-print(labels.shape)
+# print(adj.shape)
+# print(features.shape)
+# print(labels.shape)
 idx_train = range(140)
 idx_val = range(200, 500)
 idx_test = range(500, 1500)
@@ -124,6 +124,7 @@ def save_embeddings(dataset='cora'):
     output = model.savector(features, adj)
     outVec = output.cpu().detach().numpy()
     path = Path(__file__).parent / ('{}_outVec.txt'.format(dataset))
+    #这里第一个位置为地址，第二个位置为内容
     np.savetxt(path, outVec)
     path = Path(__file__).parent / ('{}_labels.txt'.format(dataset))
     outLabel = labels.cpu().detach().numpy()

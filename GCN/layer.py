@@ -1,5 +1,5 @@
 import math
-
+import torch.nn as nn
 import torch
 
 from torch.nn.parameter import Parameter
@@ -29,9 +29,14 @@ class GraphConvolution(Module):
     def reset_parameters(self):
         stdv = 1. / math.sqrt(self.weight.size(1))
         # size()函数主要是用来统计矩阵元素个数，或矩阵某一维上的元素个数的函数  size（1）为行
-        self.weight.data.uniform_(-stdv, stdv)  # uniform() 方法将随机生成下一个实数，它在 [x, y] 范围内
+       # self.weight.data.uniform_(-stdv, stdv)  # uniform() 方法将随机生成下一个实数，它在 [x, y] 范围内
+        nn.init.xavier_uniform_(self.weight,gain=1)
         if self.bias is not None:
-            self.bias.data.uniform_(-stdv, stdv)
+            #均匀分布初始化
+            nn.init.uniform_(self.bias,-stdv,stdv)
+           # self.bias.data.uniform_(-stdv, stdv)
+          #这样就不行了，因为没有fall_in和fall_out
+            #nn.init.xavier_uniform_(self.bias,gain=1)
 
     '''
     前馈运算 即计算A~ X W(0)

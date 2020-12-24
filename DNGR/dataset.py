@@ -9,5 +9,5 @@ def load_prepared_data(dataset='cora'):
     labels = np.load(path/'{}_labels.npy'.format(dataset))
     adj = sp.load_npz(path/'{}_adj.npz'.format(dataset))
     #adj = sparse_mx_to_torch_sparse_tensor(adj)
-    adj = torch.FloatTensor(adj.todense())
+    adj = adj.todense()
     return adj

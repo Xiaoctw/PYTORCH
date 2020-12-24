@@ -82,31 +82,46 @@ def PPMI_matrix(mat: np.ndarray) -> np.ndarray:
     PPMI = np.log(D * mat / dot_mat)
     PPMI = np.maximum(PPMI, 0)
     PPMI[np.isinf(PPMI)] = 0
+    #  PPMI = PPMI / PPMI.sum(1).reshape(-1, 1)
     return PPMI
 
 
 class AutoEncoderLayer(nn.Module):
     """
-    堆叠的自编码器
+    堆叠的自编码器中的单一一层
     """
-
-    def __init__(self, input_dim, output_dim, zero_ratio):
+    def __init__(self, input_dim, output_dim, zero_ratio, GPU):
         super(AutoEncoderLayer, self).__init__()
         self.zero_ratio = zero_ratio
-        self.encoder = nn.Linear(input_dim, output_dim)
-        self.decoder = nn.Linear(output_dim, input_dim)
+        self.GPU = GPU
+        self.encoder = nn.Sequential(
+            nn.Linear(input_dim, output_dim),
+            nn.BatchNorm1d(output_dim),
+            nn.LeakyReLU(negative_slope=0.2)
+        )
+        self.decoder = nn.Sequential(
+            nn.Linear(output_dim, input_dim),
+            nn.LeakyReLU(negative_slope=0.2)
+        )
 
     def forward(self, x, zero=True):
-        if zero:
-            x = x.clone().cuda()
-            rand_mat = torch.rand(x.shape).cuda()
-            zero_mat = torch.zeros(x.shape).cuda()
-            # 随机初始化为0
-            x = torch.where(rand_mat > self.zero_ratio, x, zero_mat)
+        if not self.GPU:
+            if zero:
+                x = x.cpu().clone()
+                rand_mat = torch.rand(x.shape)
+                zero_mat = torch.zeros(x.shape)
+                # 随机初始化为0
+                x = torch.where(rand_mat > self.zero_ratio, x, zero_mat)
+        else:
+            if zero:
+                x = x.clone()
+                rand_mat = torch.rand(x.shape, device='cuda')
+                zero_mat = torch.zeros(x.shape, device='cuda')
+                # 随机初始化为0
+                x = torch.where(rand_mat > self.zero_ratio, x, zero_mat)
         x = self.encoder(x)
-        x = F.leaky_relu(x, negative_slope=0.2)
+        #   x = F.leaky_relu(x, negative_slope=0.2)
         x = self.decoder(x)
-        x = F.leaky_relu(x, negative_slope=0.2)
         return x
 
     def emb(self, x):
@@ -114,22 +129,23 @@ class AutoEncoderLayer(nn.Module):
         获得该层的嵌入向量
         """
         x = self.encoder(x)
-        x = F.leaky_relu(x, negative_slope=0.2)
         return x
 
 
 class StackAutoEncoder(nn.Module):
-    def __init__(self, input_dim, hidden_dims, output_dim, zero_ratio):
+    def __init__(self, input_dim, hidden_dims, output_dim, zero_ratio, GPU=False):
         super(StackAutoEncoder, self).__init__()
         assert len(hidden_dims) >= 1
-        self.num_layers = len(hidden_dims)+1
+        self.num_layers = len(hidden_dims) + 1
         self.zero_ratio = zero_ratio
-        setattr(self, 'autoEncoder0', AutoEncoderLayer(input_dim, hidden_dims[0], zero_ratio=zero_ratio))
+        self.GPU = GPU
+        setattr(self, 'autoEncoder0', AutoEncoderLayer(input_dim, hidden_dims[0], zero_ratio=zero_ratio, GPU=GPU))
         for i in range(1, len(hidden_dims)):
             setattr(self, 'autoEncoder{}'.format(i),
-                    AutoEncoderLayer(hidden_dims[i - 1], hidden_dims[i], zero_ratio=zero_ratio))
-        setattr(self, 'autoEncoder{}'.format(self.num_layers-1),
-                AutoEncoderLayer(hidden_dims[-1], output_dim, zero_ratio=zero_ratio))
+                    AutoEncoderLayer(hidden_dims[i - 1], hidden_dims[i], zero_ratio=zero_ratio, GPU=GPU))
+        setattr(self, 'autoEncoder{}'.format(self.num_layers - 1),
+                AutoEncoderLayer(hidden_dims[-1], output_dim, zero_ratio=zero_ratio, GPU=GPU))
+        self.init_weights()
 
     def emb(self, x):
         for i in range(self.num_layers):
@@ -140,12 +156,25 @@ class StackAutoEncoder(nn.Module):
         # for i in range(self.num_layers):
         #     x = getattr(self, 'autoEncoder{}'.format(i))(x, False)
         for i in range(self.num_layers):
-            x=getattr(self, 'autoEncoder{}'.format(i)).encoder(x)
-            x=F.leaky_relu(x,negative_slope=0.2)
-        for i in range(self.num_layers-1,-1,-1):
-            x=getattr(self,'autoEncoder{}'.format(i)).decoder(x)
-            x=F.leaky_relu(x,negative_slope=0.2)
+            x = getattr(self, 'autoEncoder{}'.format(i)).encoder(x)
+        #      x=F.leaky_relu(x,negative_slope=0.2)
+        for i in range(self.num_layers - 1, -1, -1):
+            x = getattr(self, 'autoEncoder{}'.format(i)).decoder(x)
+        #      x = F.leaky_relu(x, negative_slope=0.2)
         return x
+
+    def init_weights(self):
+        # 初始化参数十分重要，可以显著降低loss值
+        # 初始化模型参数
+        for m in self.modules():
+            if isinstance(m, (nn.Linear,)):
+                #mean=0,std = gain * sqrt(2/fan_in + fan_out)
+                nn.init.xavier_uniform_(m.weight,gain=1)
+            if isinstance(m, nn.BatchNorm1d):
+                # nn.init.constant(m.weight, 1)
+                m.weight.data.fill_(1)
+                m.bias.data.zero_()
+                # nn.init.constant(m.bias, 0)
 
 
 if __name__ == '__main__':

@@ -6,7 +6,6 @@
         <serverdata>
           <mappings>
             <mapping deploy="/PYTORCH" local="$PROJECT_DIR$" web="/" />
-            <mapping local="" />
           </mappings>
         </serverdata>
       </paths>
